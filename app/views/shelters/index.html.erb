@@ -1,0 +1,14 @@
+<header class="sub-header">
+  <h1>Shelters</h1>
+  <%= link_to "New Shelter", "/shelters/new" %>
+</header>
+
+<% @shelters.each do |shelter| %>
+<section class="shelter">
+    <h3><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></h3>
+    <%= link_to "Edit", "/shelters/#{shelter.id}/edit" %>
+    <section id="<%= shelter.id %>">
+      <%= link_to "Delete", "/shelters/#{shelter.id}", method: :delete %>
+    </section>
+  </section>
+<% end %>

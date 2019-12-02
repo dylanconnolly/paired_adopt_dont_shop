@@ -1,0 +1,24 @@
+<header class="sub-header">
+<h2><%= @shelter.name %> - Available Pets </h2>
+<%= link_to "New Pet", "/shelters/#{@shelter.id}/pets/new"%>
+</header>
+
+<div class="grid-container">
+  <% @pets.each do |pet| %>
+    <div class="grid-item">
+      <% if pet.adoptable == true %>
+      <img src="<%= pet.image %>" width=350px height=350px object-fit: cover >
+      <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
+      <p>
+        Description: <%= pet.description %><br>
+        Approximate age: <%= pet.approximate_age %><br>
+        Sex: <%= pet.sex %><br>
+      </p>
+      <section id="links <%= pet.id %>">
+        <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
+        <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
+      </section>
+      <% end %>
+    </div>
+  <% end %>
+</div>

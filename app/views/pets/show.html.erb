@@ -1,0 +1,12 @@
+<section class="sub-header">
+  <h1><%= @pet.name %></h1>
+  <%= link_to "Edit Pet", "/pets/#{@pet.id}/edit" %>
+  <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
+</section>
+
+<img src="<%= @pet.image %>" height=50% width=50%>
+<h3>Name: <%= @pet.name %></h3>
+Description: <%= @pet.description %><br>
+Approximate age: <%= @pet.approximate_age %><br>
+Sex: <%= @pet.sex %><br>
+Adoptable: <%= @pet.adoptable %>
