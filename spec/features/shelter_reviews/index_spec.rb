@@ -15,7 +15,9 @@ RSpec.describe "shelter reviews", type: :feature do
         state: "IL",
         zip: "80234")
 
-      @review_1 = ShelterReview.create(title: "Good spot", rating: "4", content: "Lovely place down the street with cute dogs")
+      @review_1 = @shelter_1.shelter_reviews.create(title: "Good spot", rating: "4", content: "Lovely place down the street with cute dogs")
+      @review_2 = @shelter_1.shelter_reviews.create(title: "THE BEST", rating: "5", content: "THE BEST woooooo")
+      @review_2 = @shelter_2.shelter_reviews.create(title: "Awful", rating: "0", content: "This place only had cats. They're the worst.")
     end
 
     it "shows a list of all reviews for that shelter" do
