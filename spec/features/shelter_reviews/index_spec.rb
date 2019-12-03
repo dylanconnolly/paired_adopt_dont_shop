@@ -24,7 +24,10 @@ RSpec.describe "shelter reviews", type: :feature do
 
       visit "/shelters/#{@shelter_1.id}"
 
+
+      within "review-#{@review_1.id}"
       expect(page).to have_content("Good spot")
+      expect(page).to have_content("Lovely place down the street with cute dogs")
     end
   end
 end
