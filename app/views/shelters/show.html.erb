@@ -9,3 +9,15 @@
 <p>City: <%= @shelter.city %><p>
 <p>State: <%= @shelter.state %><p>
 <p>Zip: <%= @shelter.zip %><p>
+
+<section class="reviews">
+  <h2>Reviews</h2>
+  <% @shelter_reviews.each do |shelter_review| %>
+    <section class="review-block" id="review-<%= shelter_review.id %>">
+      <h3><%= shelter_review.title %><h3>
+      <p><%= shelter_review.rating %></p>
+      <p><%= shelter_review.content %></p>
+      <p><%= shelter_review.img %></p>
+    </section>
+  <% end %>
+</section>
