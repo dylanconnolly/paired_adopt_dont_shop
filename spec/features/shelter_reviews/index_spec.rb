@@ -17,17 +17,31 @@ RSpec.describe "shelter reviews", type: :feature do
 
       @review_1 = @shelter_1.shelter_reviews.create(title: "Good spot", rating: "4", content: "Lovely place down the street with cute dogs")
       @review_2 = @shelter_1.shelter_reviews.create(title: "THE BEST", rating: "5", content: "THE BEST woooooo")
-      @review_2 = @shelter_2.shelter_reviews.create(title: "Awful", rating: "0", content: "This place only had cats. They're the worst.")
+      @review_3 = @shelter_2.shelter_reviews.create(title: "Awful", rating: "0", content: "This place only had cats. They're the worst.")
     end
 
     it "shows a list of all reviews for that shelter" do
 
       visit "/shelters/#{@shelter_1.id}"
 
+      within "#review-#{@review_1.id}" do
+        expect(page).to have_content("Good spot")
+        expect(page).to have_content("Lovely place down the street with cute dogs")
+        expect(page).to_not have_content("THE BEST")
+        expect(page).to_not have_content("This place only had cats. They're the worst.")
+      end
 
-      within "#review-#{@review_1.id}"
-      expect(page).to have_content("Good spot")
-      expect(page).to have_content("Lovely place down the street with cute dogs")
+      within "#review-#{@review_2.id}" do
+        expect(page).to have_content("THE BEST")
+        expect(page).to have_content("5")
+      end
+
+      visit "/shelters/#{@shelter_2.id}"
+
+      within "#review-#{@review_3.id}" do
+        expect(page).to have_content("Awful")
+        expect(page).to have_content("This place only had cats. They're the worst.")
+      end
     end
   end
 end
