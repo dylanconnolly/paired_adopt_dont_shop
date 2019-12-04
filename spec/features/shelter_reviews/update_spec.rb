@@ -61,6 +61,7 @@ RSpec.describe "on shelter show page" do
   end
 
   it "an error message is displayed if user fails to input a title, rating, or content when updating review" do
+
     visit "/shelters/#{@shelter_1.id}"
 
     within "#review-#{@review_1.id}" do
@@ -73,7 +74,7 @@ RSpec.describe "on shelter show page" do
 
     click_on "Update Review"
 
-    expect(page).to have_content("Unable to create review: missing required fields")
+    expect(page).to have_content("Unable to update review: missing required fields")
 
     fill_in "title", with: "This will pass"
     fill_in "rating", with: 0
