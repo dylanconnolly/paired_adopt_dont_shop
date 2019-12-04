@@ -38,6 +38,18 @@ RSpec.describe "on shelter show page" do
     end
   end
 
+  it "user can update details of review and submit it" do
+
+    visit "/shelters/#{@shelter_1.id}"
+
+    within "#review-#{@review_1.id}" do
+      click_on "Edit"
+      fill_in :title, with: "Bad spot"
+      fill_in :rating, with: 0
+      fill_in :content, with: "Changing this comment's content"
+    end
+  end
+
 
 
 
