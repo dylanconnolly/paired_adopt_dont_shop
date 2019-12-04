@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191203191839) do
+ActiveRecord::Schema.define(version: 20191204204742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20191203191839) do
 
   create_table "shelter_reviews", force: :cascade do |t|
     t.string "title"
-    t.string "rating"
+    t.integer "rating"
     t.string "content"
     t.string "img"
     t.datetime "created_at", null: false
