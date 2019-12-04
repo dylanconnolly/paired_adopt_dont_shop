@@ -20,6 +20,7 @@
       <p><%= shelter_review.content %></p>
       <img src="<%= shelter_review.img %>">
       <%= link_to "Edit", "/shelters/#{@shelter.id}/#{shelter_review.id}/edit_review" %>
+      <%= link_to "Delete", "/shelters/#{@shelter.id}/#{shelter_review.id}", method: :delete %>
     </section>
   <% end %>
 </section>
