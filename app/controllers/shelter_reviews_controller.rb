@@ -5,12 +5,16 @@ class ShelterReviewsController < ApplicationController
   end
 
   def create
-    shelter = Shelter.find(params[:id])
+    @shelter = Shelter.find(params[:id])
 
-    review = shelter.shelter_reviews.new(review_params)
-    review.save
+    review = @shelter.shelter_reviews.new(review_params)
 
-    redirect_to "/shelters/#{shelter.id}"
+    if review.save
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash.now[:error] = "Unable to create review: missing required fields"
+      render :new
+    end
   end
 
   private

@@ -17,6 +17,9 @@
         <%= link_to "Pets", "/pets" %>
       </div>
     </section>
+    <section class="flash-response">
+      <%= flash[:error] %>
+    </section>
     <%= yield %>
   </body>
 </html>
