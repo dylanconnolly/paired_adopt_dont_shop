@@ -32,10 +32,11 @@ RSpec.describe "on shelter show page" do
 
     within "#review-#{@review_1.id}" do
       click_on "Edit"
-      expect(find_field(:title).value).to eq("Good spot")
-      expect(find_field(:rating).value).to eq(4)
-      expect(find_field(:content).value).to eq("Lovely place down the street with cute dogs")
     end
+
+    expect(find_field("title").value).to eq("Good spot")
+    expect(find_field("rating").value).to eq("4")
+    expect(find_field("content").value).to eq("Lovely place down the street with cute dogs")
   end
 
   it "user can update details of review and submit it" do
@@ -44,13 +45,18 @@ RSpec.describe "on shelter show page" do
 
     within "#review-#{@review_1.id}" do
       click_on "Edit"
-      fill_in :title, with: "Bad spot"
-      fill_in :rating, with: 0
-      fill_in :content, with: "Changing this comment's content"
+    end
+
+    fill_in "title", with: "Bad spot"
+    fill_in "rating", with: 0
+    fill_in "content", with: "Changing this comment's content"
+
+    click_on "Update Review"
+
+    within "#review-#{@review_1.id}" do
+      expect(page).to have_content("Bad spot")
+      expect(page).to have_content("0")
+      expect(page).to have_content("Changing this comment's content")
     end
   end
-
-
-
-
 end
