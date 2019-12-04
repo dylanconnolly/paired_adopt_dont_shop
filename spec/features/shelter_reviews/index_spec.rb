@@ -43,5 +43,14 @@ RSpec.describe "shelter reviews", type: :feature do
         expect(page).to have_content("This place only had cats. They're the worst.")
       end
     end
+
+    it "has a button to create a new review" do
+
+      visit "/shelters/#{@shelter_1.id}"
+
+      click_on("Add Review")
+
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/new_review")
+    end
   end
 end

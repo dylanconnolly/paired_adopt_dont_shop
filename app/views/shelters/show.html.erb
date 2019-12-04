@@ -12,6 +12,7 @@
 
 <section class="reviews">
   <h2>Reviews</h2>
+  <%= link_to "Add Review", "/shelters/#{@shelter.id}/new_review" %>
   <% @shelter_reviews.each do |shelter_review| %>
     <section class="review-block" id="review-<%= shelter_review.id %>">
       <h3><%= shelter_review.title %><h3>
