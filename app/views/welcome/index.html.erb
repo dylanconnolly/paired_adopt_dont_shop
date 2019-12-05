@@ -4,8 +4,8 @@
     <h1>Adopt Dont Shop</h2>
   </header>
 
-  <section id="welcome-index-shelters" class="content-template-1">
-    <h2 class="section-header">Popular Shelters</h2>
+  <h2 class="section-header header-1">Popular Shelters</h2>
+  <section id="welcome-index-shelters" class="content-1">
     <% @shelters.each do |shelter| %>
       <article id="shelter-<%= shelter.id %>" class="shelter" >
         <aside class="shelter-primary">
@@ -52,8 +52,36 @@
     <% end %>
   </section>
 
-  <section id="welcome-index-pets" class="content-template-2">
-    <h2 class="section-header">New Arrivals</h2>
+  <h2 class="section-header header-2">Our Mission</h2>
+  <section class="content-2">
+    <article class="instruction-block">
+      <h3>What our mission is</h3>
+      <p>
+        Some words, or maybe a lot of words, describing what our mission is
+        and why people should be encouraged to adopt previously owned animals
+        instead of buying new ones from puppy mills.
+      </p>
+    </article>
+    <article class="instruction-block">
+      <h3>1.) Do This</h3>
+      <p>A short little summary</p>
+    </article>
+    <article class="instruction-block">
+      <h3>2.) Do That</h3>
+      <p>Some more meaningul words</p>
+    </article>
+    <article class="instruction-block">
+      <h3>3.) A Call to Action</h3>
+      <p>Motivate them with filler content</p>
+    </article>
+    <article class="instruction-block">
+      <h3>4.) Finally, a conclusion</h3>
+      <p>Hooray, you (or they I suppose) did it!</p>
+    </article>
+  </section>
+
+  <h2 class="section-header header-3">New Arrivals</h2>
+  <section id="welcome-index-pets" class="content-3">
     <% @pets.each do |pet| %>
       <article id="pet-<%= pet.id %>" class="pet" >
         <%= image_tag pet.image %>
