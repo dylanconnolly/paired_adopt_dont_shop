@@ -20,7 +20,7 @@
           <%= link_to "Pets", "/pets" %>
         </main>
         <aside class="header-aside">
-          <p> Favorites: <%= favorites.total_count %> </p>
+          <%= link_to "Favorites: #{favorites.total_count}", '/favorites' %> </p>
           <p>Welcome, <span class="header-username">Guest</span></p>
         </aside>
       </div>
