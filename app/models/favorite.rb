@@ -16,4 +16,8 @@ class Favorite
   def pets
     @contents.keys
   end
+
+  def exists?(id)
+    @contents.keys.include?(id.to_s)
+  end
 end
