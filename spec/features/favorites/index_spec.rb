@@ -16,7 +16,6 @@ RSpec.describe "favorite pets index page", type: :feature do
 
   it "user can see all pets they have favorited with the pet name and image" do
 
-
     visit "/pets/#{@pet_1.id}"
     click_on "Add To Favorites"
 
@@ -64,5 +63,20 @@ RSpec.describe "favorite pets index page", type: :feature do
 
   it "has a remove button next to each pet to remove that pet from favorites" do
 
+    visit "/pets/#{@pet_1.id}"
+    click_on "Add To Favorites"
+
+    visit "/pets/#{@pet_2.id}"
+    click_on "Add To Favorites"
+
+    visit '/favorites'
+
+    within "#pet-#{@pet_1.id}" do
+      click_on "Remove From Favorites"
+    end
+
+    expect(page).to_not have_link(@pet_1.name)
+    expect(page).to_not have_css("img[src='#{@pet_1.image}']")
+    expect(page).to have_content("Favorites: 1")
   end
 end
