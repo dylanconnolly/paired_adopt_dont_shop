@@ -16,8 +16,8 @@ RSpec.describe "when user favorites a pet", type: :feature do
 
     click_on "Add To Favorites"
 
-    expect(current_path).to eq("/pets/#{@pet_1.id}")
-    expect(page).to have_content("Pet was added to your favorites!")
+    # expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_content("You have successfully added #{@pet_1.name} to your favorites!")
     expect(page).to have_content("Favorites: 1")
   end
 
