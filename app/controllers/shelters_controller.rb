@@ -6,6 +6,7 @@ class SheltersController < ApplicationController
 
   def show
     @shelter = Shelter.find(params[:id])
+    @shelter_reviews = @shelter.shelter_reviews
   end
 
   def new
