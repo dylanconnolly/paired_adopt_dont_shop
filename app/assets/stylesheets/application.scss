@@ -1,23 +1,3 @@
-// globals
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
 // variables
 
 $margin-1: 1rem;
@@ -31,6 +11,7 @@ $color-font-very-light: rgb(146, 146, 146);
 $color-font-white: white;
 
 $color-accent: rgb(129, 236, 213);
+$color-accent-2: pink;
 $color-background-dark: rgb(60, 73, 83);
 $color-background-light: rgb(255, 255, 255);
 
@@ -38,9 +19,7 @@ $color-background-light: rgb(255, 255, 255);
 
 @mixin card-1 {
   transition: 0.7s cubic-bezier(0.25, 0.1, 0.01, 1.36);
-  // &:hover {
   box-shadow: 1px 1px 4px $color-shadow;
-  // }
 }
 
 @mixin font-title {
@@ -52,7 +31,31 @@ $color-background-light: rgb(255, 255, 255);
   font-weight: 300;
 }
 
-// templates
+// globals
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-title;
+  margin: 0;
+  color: $color-font;
+}
+
+p {
+  @include font-body;
+  color: $color-font;
+  margin: 0;
+}
+
+// core
 
 .material-icons {
   color: $color-font-very-light;
@@ -63,19 +66,80 @@ $color-background-light: rgb(255, 255, 255);
   }
 }
 
+.primary-navbar {
+  display: flex;
+  align-items: center;
+  background-color: $color-background-light;
+  height: auto;
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-background-light;
+    border-bottom: 1px solid $color-background-dark;
+    align-items: center;
+    margin: 0 auto;
+    width: 95%;
+    z-index: 2;
+  }
+  .header-logo {
+    margin: 0;
+    padding: 0.5rem 0 0.35rem 0;
+    font-size: 50px;
+    color: $color-background-light;
+    background-color: $color-background-dark;
+    cursor: default;
+  }
+  .header-aside {
+    align-self: end;
+    margin-top: auto;
+    background-color: $color-background-dark;
+    p {
+      color: $color-font-white;
+      padding: 0 1rem;
+    }
+    span {
+      font-weight: 500;
+    }
+  }
+  .header-username {
+    color: $color-accent;
+  }
+  a {
+    margin: 0 1rem;
+    text-decoration: none;
+    align-self: end;
+    color: $color-font;
+    font-size: 18px;
+    font-family: "Roboto Slab", serif;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $color-accent;
+    }
+  }
+}
+
 .page-template-1 {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 150px 50px auto;
   margin: 0 auto;
   min-height: 100vh;
   width: 95%;
 
   .page-header {
-    border: 1px solid orange;
     grid-column: 1 / 3;
-    text-align: center;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 2rem 0;
+    overflow: hidden;
+    border: 1px solid $color-background-dark;
+  }
+
+  .section-header {
+    height: 100%;
+    text-decoration: underline;
+    text-decoration-color: $color-accent;
   }
 
   .shelter {
@@ -85,7 +149,7 @@ $color-background-light: rgb(255, 255, 255);
     grid-template-columns: 3fr 1fr;
     grid-template-rows: auto;
     position: relative;
-    margin-right: $margin-1;
+    margin-right: ($margin-1 * 2);
     margin-bottom: ($margin-1/2);
     padding: 1.6rem 1rem;
   }
@@ -108,12 +172,14 @@ $color-background-light: rgb(255, 255, 255);
 
   .shelter-ratings {
     display: flex;
-    color: $color-font-very-light;
     div {
       display: flex;
       margin: auto 0;
       margin-right: ($margin-1 / 2);
       margin-left: 0.2rem;
+    }
+    p {
+      color: $color-font-very-light;
     }
     i {
       font-size: 18px;
@@ -144,16 +210,6 @@ $color-background-light: rgb(255, 255, 255);
     align-items: center;
   }
 
-  .bookmark {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    color: $color-background-light;
-    background-color: $color-background-dark;
-    padding: 0.3rem;
-    // border-radius: 50px;
-  }
-
   .shelter-contact {
     text-align: end;
   }
@@ -161,31 +217,6 @@ $color-background-light: rgb(255, 255, 255);
   .emphasis {
     font-weight: 500;
     color: $color-font-light;
-  }
-
-  .pet {
-    border: 1px solid blue;
-    grid-column: 2 / 3;
-  }
-
-  .btn-1,
-  .btn-2 {
-    border: 0;
-    margin-top: 1rem;
-    margin-right: 0.5rem;
-    padding: 0.5rem 1.2rem;
-    background-color: $color-background-dark;
-    border: 1px solid $color-background-dark;
-    color: $color-font-white;
-    font-size: 1rem;
-    font-family: "Roboto Slab", serif;
-    cursor: pointer;
-  }
-
-  .btn-2 {
-    border: 2px solid $color-background-dark;
-    background-color: $color-background-light;
-    color: $color-background-dark;
   }
 
   p,
@@ -206,11 +237,6 @@ $color-background-light: rgb(255, 255, 255);
     margin: 0.5rem 0 0.5rem 0;
   }
 
-  img {
-    height: 50px;
-    width: 50px;
-  }
-
   ul {
     list-style-type: none;
     padding: 0;
@@ -221,4 +247,99 @@ $color-background-light: rgb(255, 255, 255);
     padding-left: $p-indent;
     color: $color-font-light;
   }
+}
+
+.pet {
+  @include card-1;
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 2fr 1fr;
+  margin-bottom: ($margin-1/2);
+  position: relative;
+  border: 1px solid $color-shadow;
+  .pet-city {
+    color: $color-font-light;
+    font-size: 16px;
+    font-weight: 100;
+  }
+  .pet-shelter {
+    display: flex;
+    justify-content: space-between;
+  }
+  .pet-details {
+    display: flex;
+    text-transform: lowercase;
+  }
+  .pet-description {
+    margin-left: $p-indent;
+    margin-right: 1rem;
+    padding-top: 0.3rem;
+    color: $color-font-light;
+    font-style: italic;
+    font-weight: 300;
+  }
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn-2 {
+    margin-right: 0;
+  }
+  .bookmark {
+    color: $color-background-light;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  aside {
+    grid-row: 1 / 3;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 1px solid $color-shadow;
+  }
+  img {
+    grid-row: 1 / 3;
+    height: 100%;
+    width: 200px;
+    object-fit: cover;
+  }
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.bookmark {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: $color-background-light;
+  background-color: $color-background-dark;
+  padding: 0.3rem;
+  &:hover {
+    color: $color-accent-2;
+  }
+  // border-radius: 50px;
+}
+
+.btn-1,
+.btn-2 {
+  border: 0;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background-color: $color-background-dark;
+  border: 1px solid $color-background-dark;
+  color: $color-font-white;
+  font-size: 1rem;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+}
+
+.btn-2 {
+  border: 2px solid $color-background-dark;
+  background-color: $color-background-light;
+  color: $color-background-dark;
 }
