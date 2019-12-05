@@ -34,9 +34,12 @@ RSpec.describe "when user favorites a pet", type: :feature do
 
     click_on "Add To Favorites"
 
+    expect(page).to have_content("Favorites: 1")
+
     click_on "Remove From Favorites"
 
-    expect(page).to have_content("You have removed #{@pet_1.id} from your favorites.")
+    expect(page).to have_content("You have removed #{@pet_1.name} from your favorites.")
+    expect(page).to have_content("Favorites: 0")
     expect(page).to have_link("Add To Favorites")
   end
 
