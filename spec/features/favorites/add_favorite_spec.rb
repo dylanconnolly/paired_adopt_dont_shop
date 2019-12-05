@@ -11,7 +11,7 @@ RSpec.describe "when user favorites a pet", type: :feature do
     @pet_2 = Pet.create(name: "Peter", image: "https://cdn.pixabay.com/photo/2016/05/09/10/42/weimaraner-1381186_1280.jpg", approximate_age: "1", sex: "male", shelter: @shelter_1)
   end
 
-  it "they see message that the pet was added to their favorites and are taken back to pet show page" do
+  it "they see message flash confirmation and the favorites counter increases by one" do
 
     visit "/pets/#{@pet_1.id}"
 
@@ -28,6 +28,5 @@ RSpec.describe "when user favorites a pet", type: :feature do
     expect(page).to have_content("You have successfully added #{@pet_2.name} to your favorites!")
     expect(page).to have_content("Favorites: 2")
   end
-
 
 end
