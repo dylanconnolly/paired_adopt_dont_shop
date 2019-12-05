@@ -1,7 +1,11 @@
 <section class="page-template-1">
-  <h2 class="page-header">Welcome to Adopt Don't Shop</h2>
+  <header class="page-header">
+    <!-- some worthwhile interesting banner content -->
+    <h1>Adopt Dont Shop</h2>
+  </header>
 
   <section id="welcome-index-shelters" class="content-template-1">
+    <h2 class="section-header">Popular Shelters</h2>
     <% @shelters.each do |shelter| %>
       <article id="shelter-<%= shelter.id %>" class="shelter" >
         <aside class="shelter-primary">
@@ -48,13 +52,31 @@
     <% end %>
   </section>
 
-  <section id="welcome-index-pets" class="content-template-1">
+  <section id="welcome-index-pets" class="content-template-2">
+    <h2 class="section-header">New Arrivals</h2>
     <% @pets.each do |pet| %>
       <article id="pet-<%= pet.id %>" class="pet" >
-        <h4><%= pet.name %></h4>
-        <p><%= pet.approximate_age %></p>
-        <p><%= pet.sex %></p>
         <%= image_tag pet.image %>
+        <aside>
+          <header>
+            <h2><%= pet.name %>, <span class="pet-city"> <%= pet.shelter.city %></span></h2>
+            <i class="material-icons bookmark">favorite</i>
+          </header>
+          <section class="pet-shelter">
+              <p><span class="bold">shelter:</span> <%= pet.shelter.name %></p>
+          </section>
+          <section class="pet-details">
+            <p>
+              <span class="bold">Age:</span> <%= pet.approximate_age %>, 
+              <span class="bold">Gender:</span> <%= pet.sex %>
+            </p>
+          </section>
+          <p class="pet-description">A sweetheart of a dog. Loves to cuddle and go for runs!</p>
+          <div class="btn-container">
+            <button class="btn-1">Adopt</button>
+            <button class="btn-2">Details</button>
+          </div>
+        </aside>
       </article>
     <% end %>
   </section>
