@@ -1,24 +1,61 @@
-<h2>Welcome to Adopt Don't Shop</h2>
+<section class="page-template-1">
+  <h2 class="page-header">Welcome to Adopt Don't Shop</h2>
 
-<section id="welcome-index-shelters" class="content-template-1">
-  <% @shelters.each do |shelter| %>
-    <article id="shelter-<%= shelter.id %>" >
-      <p><%= shelter.name %></p>
-      <p><%= shelter.address %></p>
-      <p><%= shelter.city %></p>
-      <p><%= shelter.state %></p>
-      <p><%= shelter.zip %></p>
-    </article>
-  <% end %>
-</section>
+  <section id="welcome-index-shelters" class="content-template-1">
+    <% @shelters.each do |shelter| %>
+      <article id="shelter-<%= shelter.id %>" class="shelter" >
+        <aside class="shelter-primary">
+          <h2 class="shelter-title"><%= shelter.name %></h2>
+          <p class="shelter-phrase">The Barkin Best Dogs!</p>
+          <section class="shelter-ratings">
+            <div>
+              <i class="material-icons">thumb_up</i>
+              <p>31</p>
+            </div>
+            <div>
+              <i class="material-icons">thumb_down</i>
+              <p>7</p>
+            </div>
+          </section>
+          <p class="shelter-description">
+            Doggo ipsum  Shoob lotsa pats long water shoob most angery pupper 
+            I have ever seen yapper, very much ruin diet. Heckin good boys and 
+            girls big ol pupper bork shoober big ol pupper heckin angery woofer.
+          </p>
+          <div class="btn-container">
+            <button class="btn-1">Learn More</button>
+            <button class="btn-2">See Our Pets</button>
+          </div>
+        </aside>
+        <aside class="shelter-location">
+          <header>
+            <div class="location-header">
+              <h4>Location</h4>
+              <i class="material-icons bookmark">bookmark_border</i>
+            </div>
+            <ul>
+              <li><%= shelter.address %></li>
+              <li><%= shelter.city %>, <%= shelter.state %></li>
+              <li><%= shelter.zip %></li>
+            </ul>
+          </header>
+          <footer class="shelter-contact">
+            <p class="emphasis"># 173-555-8831</p>
+            <p class="emphasis">bluebluebarky@bark.com</p>
+          </footer>
+        </aside>
+      </article>
+    <% end %>
+  </section>
 
-<section id="welcome-index-pets" class="content-template-1">
-  <% @pets.each do |pet| %>
-    <article id="pet-<%= pet.id %>">
-      <p><%= pet.name %></p>
-      <p><%= pet.approximate_age %></p>
-      <p><%= pet.sex %></p>
-      <%= image_tag pet.image %>
-    </article>
-  <% end %>
+  <section id="welcome-index-pets" class="content-template-1">
+    <% @pets.each do |pet| %>
+      <article id="pet-<%= pet.id %>" class="pet" >
+        <h4><%= pet.name %></h4>
+        <p><%= pet.approximate_age %></p>
+        <p><%= pet.sex %></p>
+        <%= image_tag pet.image %>
+      </article>
+    <% end %>
+  </section>
 </section>
