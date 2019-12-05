@@ -21,4 +21,11 @@ class FavoritesController < ApplicationController
 
     redirect_back(fallback_location: "/favorites")
   end
+
+  def destroy_all
+    index.each do |pet|
+      favorites.remove(pet.id)
+    end
+    redirect_to "/favorites"
+  end
 end
