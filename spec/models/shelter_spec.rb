@@ -11,6 +11,7 @@ RSpec.describe Shelter, type: :model do
 
   describe "relationships" do
     it {should have_many :pets}
+    it {should have_many :shelter_reviews}
   end
 
   it "when shelter is deleted pets belonging to shelter are deleted too" do

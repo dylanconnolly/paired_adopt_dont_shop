@@ -9,3 +9,18 @@
 <p>City: <%= @shelter.city %><p>
 <p>State: <%= @shelter.state %><p>
 <p>Zip: <%= @shelter.zip %><p>
+
+<section class="reviews">
+  <h2>Reviews</h2>
+  <%= link_to "Add Review", "/shelters/#{@shelter.id}/new_review" %>
+  <% @shelter_reviews.each do |shelter_review| %>
+    <section class="review-block" id="review-<%= shelter_review.id %>">
+      <h3><%= shelter_review.title %><h3>
+      <p><%= shelter_review.rating %></p>
+      <p><%= shelter_review.content %></p>
+      <img src="<%= shelter_review.img %>">
+      <%= link_to "Edit", "/shelters/#{@shelter.id}/#{shelter_review.id}/edit_review" %>
+      <%= link_to "Delete", "/shelters/#{@shelter.id}/#{shelter_review.id}", method: :delete %>
+    </section>
+  <% end %>
+</section>
