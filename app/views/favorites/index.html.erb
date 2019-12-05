@@ -3,6 +3,7 @@ Favorites
 <% if @pets.count == 0 %>
   <p>You do not have any favorite pets.</p>
 <% end %>
+<%= link_to "Remove All Favorites", "/favorites", method: :delete %>
 <% @pets.each do |pet| %>
   <section class="fav-pet" id="pet-<%= pet.id %>">
     <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
