@@ -11,7 +11,7 @@ shelter_1 = Shelter.create(name: "Blue Blue Barky",
   state: "CO",
   zip: "90204")
 
-shelter_2 = Shelter.create(name: "Rodeo Roundup Soundup Pupps",
+shelter_2 = Shelter.create(name: "Rodeo Roundup",
  address: "5608 N Eaton St.",
  city: "Chicago",
  state: "IL",
