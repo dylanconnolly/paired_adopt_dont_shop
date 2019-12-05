@@ -20,4 +20,8 @@ class Favorite
   def exists?(id)
     @contents.keys.include?(id.to_s)
   end
+
+  def remove(id)
+    @contents.delete(id.to_s)
+  end
 end
