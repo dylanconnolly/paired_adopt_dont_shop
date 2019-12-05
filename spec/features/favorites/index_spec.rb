@@ -11,6 +11,7 @@ RSpec.describe "favorite pets index page", type: :feature do
 
     pet_1 = Pet.create(name: "Rufus", image: "https://cdn.pixabay.com/photo/2018/05/07/10/48/husky-3380548_1280.jpg", approximate_age: "4", sex: "male", shelter: shelter_1)
     pet_2 = Pet.create(name: "Peter", image: "https://cdn.pixabay.com/photo/2016/05/09/10/42/weimaraner-1381186_1280.jpg", approximate_age: "1", sex: "male", shelter: shelter_1)
+    pet_3 = Pet.create(name: "Matt", image: "https://cdn.pixabay.com/photo/2015/06/08/15/02/pug-801826_960_720.jpg", approximate_age: "4", sex: "male", shelter: shelter_1)
 
     visit "/pets/#{pet_1.id}"
     click_on "Add To Favorites"
@@ -20,9 +21,11 @@ RSpec.describe "favorite pets index page", type: :feature do
 
     visit '/favorites'
 
-    expect(page).to have_content(pet_1.name)
-    expect(page).to have_content(pet_1.img)
-    expect(page).to have_content(pet_2.name)
-    expect(page).to have_content(pet_2.img)
+    expect(page).to have_link(pet_1.name)
+    expect(page).to have_css("img[src='#{pet_1.image}']")
+    expect(page).to have_link(pet_2.name)
+    expect(page).to have_css("img[src='#{pet_1.image}']")
+    expect(page).to_not have_link(pet_3.name)
+    expect(page).to_not have_css("img[src='#{pet_3.image}']")
   end
 end

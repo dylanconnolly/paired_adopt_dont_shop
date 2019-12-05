@@ -10,6 +10,6 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @pets = Pet.all
+    @pets = Pet.where(id: favorites.pets)
   end
 end
