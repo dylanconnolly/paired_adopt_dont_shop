@@ -29,4 +29,12 @@ RSpec.describe "when user favorites a pet", type: :feature do
     expect(page).to have_content("Favorites: 2")
   end
 
+  it "the user no longer sees link to favorite pet but sees link to remove pet from favorites" do
+    visit "/pets/#{@pet_1.id}"
+
+    click_on "Add To Favorites"
+
+    expect(page).to have_link("Remove From Favorites")
+  end
+
 end
