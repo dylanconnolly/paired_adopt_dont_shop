@@ -11,6 +11,7 @@ RSpec.describe Pet, type: :model do
 
   describe "relationships" do
     it {should belong_to :shelter}
+    it {should have_many :applications}
   end
 
   it "defaults adoptable to true" do
