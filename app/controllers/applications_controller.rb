@@ -11,11 +11,13 @@ class ApplicationsController < ApplicationController
     if application.save
       pets.each do |pet|
         favorites.remove(pet.id)
+        application.pets << pet
       end
       flash[:succes] = "Application successfully submitted!"
       redirect_to '/favorites'
     else
       flash[:error] = "Please complete all fields on the form."
+      @pets = Pet.where(id: favorites.pets)
       render :new
     end
 

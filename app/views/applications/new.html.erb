@@ -1,10 +1,10 @@
 <%= form_tag "/applications" do %>
-    <% @pets.each do |pet| %>
-      <section id="pet-<%= pet.id %>">
-        <%= check_box_tag 'pet_ids[]', pet.id %>
-        <%= label_tag pet.name %>
-      </section>
-    <% end %>
+  <% @pets.each do |pet| %>
+    <section id="pet-<%= pet.id %>">
+      <%= check_box_tag 'pet_ids[]', pet.id %>
+      <%= label_tag pet.name %>
+    </section>
+  <% end %>
   <%= label_tag :name %>
   <%= text_field_tag :name %>
   <%= label_tag :address %>
