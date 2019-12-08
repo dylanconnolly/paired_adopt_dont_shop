@@ -4,6 +4,7 @@ Favorites
   <p>You do not have any favorite pets.</p>
 <% end %>
 <%= link_to "Remove All Favorites", "/favorites", method: :delete %>
+<%= link_to "Adopt Pets", "/favorites/apply" %>
 <% @pets.each do |pet| %>
   <section class="fav-pet" id="pet-<%= pet.id %>">
     <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
