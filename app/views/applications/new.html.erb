@@ -1,12 +1,10 @@
 <%= form_tag "/applications" do %>
-  <ul>
     <% @pets.each do |pet| %>
-      <li>
-        <%= check_box_tag 'pets []', "#{pet.id}" %>
-        <%= pet.name %>
-      </li>
+      <section id="pet-<%= pet.id %>">
+        <%= check_box_tag 'pet_ids[]', pet.id %>
+        <%= label_tag pet.name %>
+      </section>
     <% end %>
-  </ul>
   <%= label_tag :name %>
   <%= text_field_tag :name %>
   <%= label_tag :address %>
@@ -19,6 +17,8 @@
   <%= text_field_tag :zip %>
   <%= label_tag :phone %>
   <%= text_field_tag :phone %>
+  <%= label_tag "Why would are you a good home for these pet(s)?" %>
+  <%= text_area_tag :reason %>
 
   <%= submit_tag "Apply For Pets" %>
 <% end %>
