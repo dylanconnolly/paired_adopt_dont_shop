@@ -66,5 +66,6 @@ RSpec.describe "new application form" do
     expect(current_path).to eq('/favorites')
     expect(page).to_not have_content(@pet_1.name)
     expect(page).to_not have_content(@pet_2.name)
+    expect(page).to have_content("Application successfully submitted!")
   end
 end
