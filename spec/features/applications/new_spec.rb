@@ -30,10 +30,41 @@ RSpec.describe "new application form" do
     expect(page).to have_content(@pet_2.name)
     expect(page).to_not have_content(@pet_3.name)
 
-    select "Rufus", :from => :pets
+    within "#pet-#{@pet_1.id}" do
+      page.check("pet_ids[]")
+    end
+
+    within "#pet-#{@pet_2.id}" do
+      page.check("pet_ids[]")
+    end
   end
 
-  it "has a form that user can fill out and submit application" do
+  it "has a form that user can fill out and submit application and pets applied for will no longer appear on favorites page" do
 
+    visit '/favorites'
+
+    click_on "Adopt Pets"
+
+    within "#pet-#{@pet_1.id}" do
+      page.check("pet_ids[]")
+    end
+
+    within "#pet-#{@pet_2.id}" do
+      page.check("pet_ids[]")
+    end
+
+    fill_in "name", with: "Dylan"
+    fill_in "address", with: "123 Main St"
+    fill_in "city", with: "Denver"
+    fill_in "state", with: "CO"
+    fill_in "zip", with: "80203"
+    fill_in "phone", with: "5555555555"
+    fill_in "reason", with: "I love animals and my house is dog friendly."
+
+    click_on "Apply For Pets"
+
+    expect(current_path).to eq('/favorites')
+    expect(page).to_not have_content(@pet_1.name)
+    expect(page).to_not have_content(@pet_2.name)
   end
 end
