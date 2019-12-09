@@ -15,3 +15,10 @@ Description: <%= @pet.description %><br>
 Approximate age: <%= @pet.approximate_age %><br>
 Sex: <%= @pet.sex %><br>
 Adoptable: <%= @pet.adoptable %>
+
+<p>Applicants:</p>
+<section id="applications">
+<% @pet.applications.each do |application| %>
+  <%= link_to "#{application.name}", "/applications/#{application.id}" %>
+<% end %>
+</section>
