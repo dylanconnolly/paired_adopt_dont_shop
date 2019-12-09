@@ -39,4 +39,23 @@ RSpec.describe "application show page" do
 
     expect(page).to_not have_css("#pet-#{@pet_3.id}")
   end
+
+  it "has a link to approve the application for each pet listed on the app" do
+
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_1.id}" do
+      click_link "Approve Adoption"
+    end
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_content("Adoptable: false")
+    expect(page).to have_content("On hold for #{@application.name}.")
+
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_2.id}" do
+      expect(page).to have_link("Approve Adoption")
+    end
+  end
 end
