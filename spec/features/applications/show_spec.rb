@@ -58,4 +58,25 @@ RSpec.describe "application show page" do
       expect(page).to have_link("Approve Adoption")
     end
   end
+
+  it "allows user to be approved for any number of pets on the application" do
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_1.id}" do
+      click_link "Approve Adoption"
+    end
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(page).to have_content("Adoptable: false")
+    expect(page).to have_content("(On hold for #{@application.name}.)")
+
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_2.id}" do
+      click_link "Approve Adoption"
+    end
+    expect(current_path).to eq("/pets/#{@pet_2.id}")
+    expect(page).to have_content("Adoptable: false")
+    expect(page).to have_content("(On hold for #{@application.name}.)")
+  end
 end
