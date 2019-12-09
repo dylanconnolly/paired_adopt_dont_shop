@@ -18,6 +18,9 @@ Adoptable: <%= @pet.adoptable %>
 
 <p>Applicants:</p>
 <section id="applications">
+<% if @pet.applications.count == 0 %>
+<p>There are no applications to adopt this pet.</p>
+<% end %>
 <% @pet.applications.each do |application| %>
   <%= link_to "#{application.name}", "/applications/#{application.id}" %>
 <% end %>
