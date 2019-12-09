@@ -50,7 +50,7 @@ RSpec.describe "application show page" do
 
     expect(current_path).to eq("/pets/#{@pet_1.id}")
     expect(page).to have_content("Adoptable: false")
-    expect(page).to have_content("On hold for #{@application.name}.")
+    expect(page).to have_content("(On hold for #{@application.name}.)")
 
     visit "/applications/#{@application.id}"
 
