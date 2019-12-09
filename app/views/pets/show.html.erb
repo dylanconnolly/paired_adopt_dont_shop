@@ -14,7 +14,11 @@
 Description: <%= @pet.description %><br>
 Approximate age: <%= @pet.approximate_age %><br>
 Sex: <%= @pet.sex %><br>
-Adoptable: <%= @pet.adoptable %>
+<% if @pet.adoptable == false %>
+  Adoptable: <%= @pet.adoptable %> (On hold for <%= @pet_application.application.name %>.)
+<% else %>
+  Adoptable: <%= @pet.adoptable %>
+<% end %>
 
 <p>Applicants:</p>
 <section id="applications">
