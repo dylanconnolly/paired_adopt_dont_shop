@@ -21,7 +21,6 @@ class ApplicationsController < ApplicationController
       render :new
     end
 
-
   end
 
   private
