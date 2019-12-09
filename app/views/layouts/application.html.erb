@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto+Slab:300,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"> 
+      rel="stylesheet">
   </head>
 
   <body>
@@ -20,12 +20,14 @@
           <%= link_to "Pets", "/pets" %>
         </main>
         <aside class="header-aside">
+          <%= link_to "Favorites: #{favorites.total_count}", '/favorites' %> </p>
           <p>Welcome, <span class="header-username">Guest</span></p>
         </aside>
       </div>
     </nav>
     <section class="flash-response">
       <%= flash[:error] %>
+      <%= flash[:notice] %>
     </section>
     <%= yield %>
     <footer class="primary-footer">
