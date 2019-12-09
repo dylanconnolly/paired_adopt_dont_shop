@@ -11,15 +11,14 @@ class FavoritesController < ApplicationController
 
   def index
     @pets = Pet.where(id: favorites.pets)
-    require "pry"; binding.pry
     @applications = Application.all
   end
 
   def destroy
     path = request.env["PATH_INFO"] # will return where the request came from ("/favorites/:pet_id" if specific pet is to be removed or "/favorites" if user wants to remove all)
-
     if path == "/favorites"
-      index.each do |pet|
+      require "pry"; binding.pry
+      @pets.each do |pet|
         favorites.remove(pet.id)
       end
     else

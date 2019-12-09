@@ -12,3 +12,10 @@ Favorites
     <%= link_to "Remove From Favorites", "/favorites/#{pet.id}", method: :delete %>
   </section>
 <% end %>
+<section id="application-pets">
+  <% @applications.each do |application| %>
+    <% application.pets.each do |pet| %>
+      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <% end %>
+  <% end %>
+</section>
