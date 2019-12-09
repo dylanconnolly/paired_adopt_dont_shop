@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   delete '/favorites', to: 'favorites#destroy'
   get '/favorites/apply', to: 'applications#new'
   post '/applications', to: 'applications#create'
+  get '/applications/:app_id', to: 'applications#show'
 end

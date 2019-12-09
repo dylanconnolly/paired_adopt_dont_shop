@@ -20,7 +20,10 @@ class ApplicationsController < ApplicationController
       @pets = Pet.where(id: favorites.pets)
       render :new
     end
+  end
 
+  def show
+    @application = Application.find(params[:app_id])
   end
 
   private
