@@ -1,0 +1,15 @@
+// mixins
+
+@mixin card-1 {
+	transition: 0.7s cubic-bezier(0.25, 0.1, 0.01, 1.36);
+	box-shadow: 1px 1px 4px $color-shadow;
+}
+
+@mixin font-title {
+	font-family: "Bebas Neue", cursive;
+}
+
+@mixin font-body {
+	font-family: "Roboto Slab", serif;
+	font-weight: 300;
+}
