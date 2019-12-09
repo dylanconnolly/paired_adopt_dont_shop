@@ -64,8 +64,8 @@ RSpec.describe "new application form" do
     click_on "Apply For Pets"
 
     expect(current_path).to eq('/favorites')
-    expect(page).to_not have_content(@pet_1.name)
-    expect(page).to_not have_content(@pet_2.name)
+    expect(page).to_not have_css("#pet-#{@pet_1.id}")
+    expect(page).to_not have_css("#pet-#{@pet_2.id}")
     expect(page).to have_content("Application successfully submitted!")
   end
 
@@ -93,7 +93,7 @@ RSpec.describe "new application form" do
 
     click_on "Apply For Pets"
 
-    within "#applications" do
+    within "#application-pets" do
       expect(page).to have_content(@pet_1.name)
       expect(page).to have_content(@pet_2.name)
     end

@@ -11,6 +11,8 @@ class FavoritesController < ApplicationController
 
   def index
     @pets = Pet.where(id: favorites.pets)
+    require "pry"; binding.pry
+    @applications = Application.all
   end
 
   def destroy
