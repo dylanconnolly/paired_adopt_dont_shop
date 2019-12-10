@@ -13,7 +13,7 @@
       </section>
     </div>
     <div class="screen">    
-      <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e45656744076287cd492/rhodesian-ridgeback-2727035.jpg" />
+      <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e4565674407c2b7fd195/rhodesian-ridgeback-2727035.jpg" />
     </div>
   </header>
 
@@ -21,30 +21,24 @@
   <section class="featured-pets">
     <h2 class="section-header white">New Arrivals</h2>
     <section id="welcome-index-pets" class="pets-new-arrivals">
-      <% @pets.first(3).each do |pet| %>
-        <article id="pet-<%= pet.id %>" class="card-vertical" >
-          <%= image_tag pet.image %>
-          <aside>
-            <header>
-              <h2><%= pet.name %> <span class="pet-city">, <%= pet.shelter.city %></span></h2>
-              <i class="material-icons bookmark">favorite</i>
-            </header>
-            <section class="pet-shelter">
-                <p><span class="bold">shelter:</span><%= link_to pet.shelter.name, "/shelters/#{pet.shelter.id}" %></p>
-            </section>
-            <section class="pet-details">
-              <p>
-                <span class="bold">Age:</span> <%= pet.approximate_age %>, 
-                <span class="bold">Gender:</span> <%= pet.sex %>
-              </p>
-            </section>
-            <p class="pet-description">A sweetheart of a dog. Loves to cuddle and go for runs!</p>
-          </aside>
-          <div class="btn-container">
-            <button class="btn-1">Adopt</button>
-            <button class="btn-2">Details</button>
-          </div>
-        </article>
+      <% @pets.first(3).each do |pet| %>\
+      <%= render partial: 'shared/petcard', 
+          locals: {
+                    shelter: {
+                      id: pet.shelter.id,
+                      url_show: "/shelters/#{pet.shelter.id}",
+                      name: pet.shelter.name,
+                      city: pet.shelter.city
+                    },
+                    pet: {
+                      id: pet.id,
+                      image: pet.image,
+                      name: pet.name,
+                      age: pet.approximate_age,
+                      sex: pet.sex,
+                    }
+                  }
+      %>
       <% end %>
     </section>
   </section>
@@ -53,48 +47,20 @@
     <h2 class="section-header">Popular Shelters</h2>
     <section id="welcome-index-shelters" class="content-1">
       <% @shelters.first(4).each do |shelter| %>
-        <article id="shelter-<%= shelter.id %>" class="shelter" >
-          <aside class="shelter-primary">
-            <h2 class="shelter-title"><%= shelter.name %></h2>
-            <p class="shelter-phrase">The Barkin Best Dogs!</p>
-            <section class="shelter-ratings">
-              <div>
-                <i class="material-icons">thumb_up</i>
-                <p>31</p>
-              </div>
-              <div>
-                <i class="material-icons">thumb_down</i>
-                <p>7</p>
-              </div>
-            </section>
-            <p class="shelter-description">
-              Doggo ipsum  Shoob lotsa pats long water shoob most angery pupper 
-              I have ever seen yapper, very much ruin diet. Heckin good boys and 
-              girls big ol pupper bork shoober big ol pupper heckin angery woofer.
-            </p>
-            <div class="btn-container">
-              <button class="btn-1">Learn More</button>
-              <button class="btn-2">See Our Pets</button>
-            </div>
-          </aside>
-          <aside class="shelter-location">
-            <header>
-              <div class="location-header">
-                <h4>Location</h4>
-                <i class="material-icons bookmark">bookmark_border</i>
-              </div>
-              <ul>
-                <li><%= shelter.address %></li>
-                <li><%= shelter.city %>, <%= shelter.state %></li>
-                <li><%= shelter.zip %></li>
-              </ul>
-            </header>
-            <footer class="shelter-contact">
-              <p class="emphasis"># 173-555-8831</p>
-              <p class="emphasis">bluebluebarky@bark.com</p>
-            </footer>
-          </aside>
-        </article>
+        <%= render partial: 'shared/sheltercard',
+          locals: {
+            shelter: {
+              id: shelter.id,
+              name: shelter.name,
+              # phrase: shelter.phrase,
+              # description: shelter.description,ß
+              address: shelter.address,
+              city: shelter.city,
+              state: shelter.state,
+              zip: shelter.zip
+            }
+          }
+        %>
       <% end %>
     </section>
   </section>
