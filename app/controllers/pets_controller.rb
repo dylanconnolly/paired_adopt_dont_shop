@@ -6,6 +6,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    if @pet.adoptable == false
+      @pet_application = PetApplication.find_by(pet_id: @pet.id, approved: true)
+    end
   end
 
   def new
@@ -26,11 +29,9 @@ class PetsController < ApplicationController
   end
 
   def update
+    # request_path = URI(request.referer).path
     pet = Pet.find(params[:pet_id])
-
     pet.update(pet_params)
-
-    pet.save
 
     redirect_to "/pets/#{pet.id}"
   end
