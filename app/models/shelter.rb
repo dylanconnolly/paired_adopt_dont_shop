@@ -8,4 +8,12 @@ class Shelter < ApplicationRecord
       PetApplication.pet_adopted?(pet) == true
     end
   end
+
+  def count_of_pets
+    pets.count
+  end
+
+  def average_rating
+    shelter_reviews.average(:rating)
+  end
 end
