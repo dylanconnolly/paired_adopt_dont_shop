@@ -15,7 +15,7 @@
     <nav class="primary-navbar">
       <div class="navbar-content">
         <main>
-          <i class="material-icons header-logo">pets</i>
+          <%= link_to "<i class='material-icons header-logo'>pets</i>".html_safe, "/", class: "header-logo" %>
           <%= link_to "Shelters", "/shelters" %>
           <%= link_to "Pets", "/pets" %>
         </main>
