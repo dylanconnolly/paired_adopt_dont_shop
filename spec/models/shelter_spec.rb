@@ -76,4 +76,26 @@ RSpec.describe Shelter, type: :model do
         expect(shelter_1.pets_with_approved_applications).to eq([pet_1, pet_2])
     end
   end
+
+  describe "statistics methods" do
+    describe "#count_of_pets" do
+      shelter_1 = Shelter.create(name: "Blue Blue Barky",
+        address: "123 This Way",
+        city: "Denver",
+        state: "CO",
+        zip: "90204")
+      shelter_2 = Shelter.create(name: "Some Kinda Shelter",
+        address: "123 iadsfjh",
+        city: "Juneau",
+        state: "AK",
+        zip: "09238")
+
+        pet_1 = Pet.create(name: "Rufus", image: "https://cdn.pixabay.com/photo/2018/05/07/10/48/husky-3380548_1280.jpg", approximate_age: "4", sex: "male", shelter: shelter_1)
+        pet_2 = Pet.create(name: "Peter", image: "https://cdn.pixabay.com/photo/2016/05/09/10/42/weimaraner-1381186_1280.jpg", approximate_age: "1", sex: "male", shelter: shelter_1)
+        pet_3 = Pet.create(name: "Matt", image: "https://cdn.pixabay.com/photo/2015/06/08/15/02/pug-801826_960_720.jpg", approximate_age: "4", sex: "male", shelter: shelter_2)
+
+      expect(shelter_1.count_of_pets).to eq(2)
+      expect(shelter_2.count_of_pets).to eq(1)
+    end
+  end
 end
