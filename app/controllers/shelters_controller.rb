@@ -33,9 +33,15 @@ class SheltersController < ApplicationController
   end
 
   def destroy
-    Shelter.destroy(params[:id])
+    shelter = Shelter.find(params[:id])
 
-    redirect_to '/shelters'
+    if shelter.pets_with_approved_applications.count == 0
+      Shelter.destroy(params[:id])
+      redirect_to '/shelters'
+    else
+      flash[:error] = "Cannot delete shelter due to one or more pets having approved applications."
+      redirect_back(fallback_location: "/shelters")
+    end
   end
 
   def index_pets
