@@ -7,7 +7,7 @@ class PetApplication < ApplicationRecord
     approved_statuses.include?(true)
   end
 
-  def self.find(pet_id, app_id)
+  def self.find_app(pet_id, app_id)
     find_by(pet_id: pet_id, application_id: app_id)
   end
 end

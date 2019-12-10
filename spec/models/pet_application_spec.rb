@@ -61,11 +61,11 @@ RSpec.describe PetApplication, type: :model do
       application_2.pets << pet_1
       application_2.pets << pet_2
 
-      expect(PetApplication.find(pet_1.id, application_1.id).pet).to eq(pet_1)
-      expect(PetApplication.find(pet_1.id, application_1.id).application).to eq(application_1)
+      expect(PetApplication.find_app(pet_1.id, application_1.id).pet).to eq(pet_1)
+      expect(PetApplication.find_app(pet_1.id, application_1.id).application).to eq(application_1)
 
-      expect(PetApplication.find(pet_1.id, application_2.id).pet).to eq(pet_1)
-      expect(PetApplication.find(pet_1.id, application_2.id).application).to eq(application_2)
+      expect(PetApplication.find_app(pet_1.id, application_2.id).pet).to eq(pet_1)
+      expect(PetApplication.find_app(pet_1.id, application_2.id).application).to eq(application_2)
     end
   end
 end
