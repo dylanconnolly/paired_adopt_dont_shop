@@ -58,13 +58,38 @@ RSpec.describe "shelter index page", type: :feature do
 
     it "doesn't allow shelter to be deleted if shelter has any pets with application in approved status" do
 
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << @pet_1
+
+      visit "/applications/#{application.id}"
+
+      within "#pet-#{@pet_1.id}" do
+        click_link "Approve Adoption"
+      end
+
       visit "/shelters"
 
       within "##{@shelter_1.id}" do
         click_link "Delete"
       end
 
-      expect(page).to have_content("Can't delete shelter because there are pets pending adoption.")
+      expect(page).to have_content("Cannot delete shelter due to one or more pets having approved applications.")
+    end
+
+    it "allows shelter to be deleted if no pets having approved applications, pets are deleted with shelter" do
+
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << @pet_1
+
+      visit "/shelters"
+
+      within "##{@shelter_1.id}" do
+        click_link "Delete"
+      end
+
+      expect(page).to_not have_content(@shelter_1.id)
     end
   end
 
