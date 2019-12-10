@@ -1,0 +1,24 @@
+<%= form_tag "/applications" do %>
+  <% @pets.each do |pet| %>
+    <section id="pet-<%= pet.id %>">
+      <%= check_box_tag 'pet_ids[]', pet.id %>
+      <%= label_tag pet.name %>
+    </section>
+  <% end %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+  <%= label_tag :address %>
+  <%= text_field_tag :address %>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %>
+  <%= label_tag :state %>
+  <%= text_field_tag :state %>
+  <%= label_tag :zip %>
+  <%= text_field_tag :zip %>
+  <%= label_tag :phone %>
+  <%= text_field_tag :phone %>
+  <%= label_tag "Why would you make a good home for these pet(s)?" %>
+  <%= text_area_tag :reason %>
+
+  <%= submit_tag "Apply For Pets" %>
+<% end %>

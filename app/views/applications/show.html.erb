@@ -1,0 +1,20 @@
+
+<p> Name: <%= @application.name %> </p>
+<p> Address: <%= @application.address %> </p>
+<p> City: <%= @application.city %> </p>
+<p> State: <%= @application.state %> </p>
+<p> Zip: <%= @application.zip %> </p>
+<p> Phone Number: <%= @application.phone %> </p>
+<p> Reason I would make a good home: <%= @application.reason %> </p>
+
+<h3>Pets applied for:</h3>
+<% @application.pets.each do |pet| %>
+  <section id="pet-<%= pet.id %>">
+  <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+  <% if @pet_applications.pet_adopted?(pet) == false %>
+  <%= link_to "Approve Adoption", "#{@application.id}/#{pet.id}", method: :patch %>
+  <% elsif @pet_applications.find_app(pet.id, @application.id).approved == true %>
+  <%= link_to "Unapprove Adoption", "#{@application.id}/#{pet.id}", method: :patch %>
+  <% end %>
+  </section>
+<% end %>
