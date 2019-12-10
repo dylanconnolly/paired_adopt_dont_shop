@@ -18,19 +18,26 @@
 	.header-logo {
 		margin: 0;
 		padding: 0.5rem 0 0.35rem 0;
-		font-size: 25px;
-		color: $color-font-white;
+		font-size: 35px;
+		background-color: white;
+		color: $color-background-dark;
+		border: 1px solid $color-background-dark;
 		cursor: pointer;
+	}
+	.header-links {
+		margin: 0;
+		margin-right: 1rem;
 	}
 	.header-aside {
 		margin-top: auto;
 		display: flex;
 		flex-direction: row-reverse;
 		height: 100%;
-		border: 1px solid red;
+		margin-bottom: .2rem;
 		p,
 		a {
 			color: $color-font-white;
+			font-size: 16px;
 		}
 		span {
 			font-weight: 500;
