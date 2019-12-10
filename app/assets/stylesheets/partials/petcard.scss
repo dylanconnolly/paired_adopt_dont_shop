@@ -1,0 +1,38 @@
+.pet-card {
+	@include card-1;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: $color-font-white;
+	border: 1px solid $color-background-dark;
+	width: 215px;
+	margin-right: 1rem;
+	aside {
+		margin-top: .4rem;
+		padding: 0 .6rem;
+	}
+	img {
+		object-fit: cover;
+		height: 200px;
+		width: 100%;
+	}
+	.pet-city {
+		font-size: 16px;
+	}
+	.btn-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: stretch;
+		align-items: stretch;
+		padding: 0 .4rem;
+		margin-top: .5rem;
+		a {
+			text-align: center;
+			margin: .5rem 0;
+		}
+		a:last-of-type {
+			margin-top: 0;
+		}
+	}
+}
