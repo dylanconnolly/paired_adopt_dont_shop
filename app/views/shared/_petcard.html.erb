@@ -1,4 +1,4 @@
-<article id="pet-<%= pet[:id] %>" class="card-vertical" >
+<article id="pet-<%= pet[:id] %>" class="pet-card" >
   <%= image_tag pet[:image] %>
   <aside>
     <header>
@@ -17,7 +17,7 @@
     <p class="pet-description">A sweetheart of a dog. Loves to cuddle and go for runs!</p>
   </aside>
   <div class="btn-container">
-    <button class="btn-1">Adopt</button>
-    <button class="btn-2">Details</button>
+    <%= link_to "Adopt", "", class:"btn-1" %>
+    <%= link_to "Details", "/pets/#{pet[:id]}", class:"btn-2" %>
   </div>
 </article>
