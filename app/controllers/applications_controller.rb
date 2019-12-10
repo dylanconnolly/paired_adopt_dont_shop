@@ -24,6 +24,7 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:app_id])
+    @pet_applications = PetApplication.all
   end
 
   private

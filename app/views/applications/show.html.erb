@@ -11,6 +11,8 @@
 <% @application.pets.each do |pet| %>
   <section id="pet-<%= pet.id %>">
   <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+  <% if @pet_applications.pet_adopted?(pet) == false %>
   <%= link_to "Approve Adoption", "#{@application.id}/#{pet.id}", method: :patch %>
+  <% end %>
   </section>
 <% end %>
