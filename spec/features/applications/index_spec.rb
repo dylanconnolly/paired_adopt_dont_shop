@@ -23,7 +23,7 @@ RSpec.describe "applications index" do
     @application_3.pets << @pet_3
   end
 
-  it "pet show page has link to show name of all applicants for that pet" do
+  it "pet show page has list of all applicants for that pet and the applicant's name is a link to their application" do
 
     visit "pets/#{@pet_1.id}"
 

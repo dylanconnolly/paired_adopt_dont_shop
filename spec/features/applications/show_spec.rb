@@ -108,4 +108,31 @@ RSpec.describe "application show page" do
       expect(page).to_not have_link("Approve Adoption")
     end
   end
+
+  it "gives the ability to revoke an approved application for a pet" do
+
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_1.id}" do
+      click_link "Approve Adoption"
+    end
+
+    visit "/applications/#{@application_2.id}"
+
+    within "#pet-#{@pet_1.id}" do
+      expect(page).to_not have_link("Approve Adoption")
+      expect(page).to_not have_link("Unapprove Adoption")
+    end
+
+    within "#pet-#{@pet_2.id}" do
+      click_link "Approve Adoption"
+    end
+
+    visit "/applications/#{@application.id}"
+
+    within "#pet-#{@pet_1.id}" do
+      expect(page).to have_link("Unapprove Adoption")
+      expect(page).to_not have_link("Approve Adoption")
+    end
+  end
 end
