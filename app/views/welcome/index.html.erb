@@ -13,7 +13,8 @@
       </section>
     </div>
     <div class="screen">    
-      <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e4565674407c2b7fd195/rhodesian-ridgeback-2727035.jpg" />
+      <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e456567749752c7bd391/rhodesian-ridgeback-2727035.jpg" />
+      <div class="screen-white"></div>
     </div>
   </header>
 
@@ -21,7 +22,7 @@
   <section class="featured-pets">
     <h2 class="section-header white">New Arrivals</h2>
     <section id="welcome-index-pets" class="pets-new-arrivals">
-      <% @pets.first(3).each do |pet| %>\
+      <% @pets.first(3).each do |pet| %>
       <%= render partial: 'shared/petcard', 
           locals: {
                     shelter: {

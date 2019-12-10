@@ -23,6 +23,11 @@
 		transition: 1s ease-in-out;
 		filter: brightness(88%);
 	}
+	.screen-white {
+		width: 100vw;
+		height: 100vw;
+		background-color: $color-accent-2;
+	}
 	.btn-container {
 		display: flex;
 		justify-content: space-between;
@@ -118,108 +123,4 @@
 
 .section-header {
 	margin: 3rem 0 2rem 0;
-}
-
-.shelter {
-	@include card-1;
-	grid-column: 1 / 2;
-	display: grid;
-	grid-template-columns: 3fr 1fr;
-	grid-template-rows: auto;
-	position: relative;
-	margin-bottom: ($margin-1/2);
-	padding: 1.6rem 1rem;
-	.shelter-primary {
-		grid-column: 1 / 2;
-		border-right: 1px solid $color-accent;
-	}
-
-	.shelter-title {
-		color: $color-font;
-	}
-
-	.shelter-phrase {
-		color: $color-font-very-light;
-		font-style: italic;
-		font-weight: 500;
-		margin-bottom: ($margin-1 / 2);
-	}
-
-	.shelter-ratings {
-		display: flex;
-		div {
-			display: flex;
-			margin: auto 0;
-			margin-right: ($margin-1 / 2);
-			margin-left: 0.2rem;
-		}
-		p {
-			color: $color-font-very-light;
-		}
-		i {
-			font-size: 18px;
-			margin: auto 0;
-			margin-right: ($margin-1 / 3);
-		}
-	}
-
-	.shelter-description {
-		color: $color-font-light;
-		margin-top: ($margin-1 / 3);
-		padding: 0 $p-indent;
-		text-transform: lowercase;
-	}
-
-	.shelter-location {
-		grid-column: 2 / 3;
-		grid-row: 1 / 4;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding-left: $margin-1;
-	}
-
-	.location-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.shelter-contact {
-		text-align: end;
-	}
-
-	.emphasis {
-		font-weight: 500;
-		color: $color-font-light;
-	}
-
-	p,
-	li {
-		@include font-body;
-	}
-
-	h2,
-	h4 {
-		@include font-title;
-	}
-
-	h2 {
-		margin-bottom: 0.3rem;
-	}
-
-	h4 {
-		margin: 0.5rem 0 0.5rem 0;
-	}
-
-	ul {
-		list-style-type: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	li {
-		padding-left: $p-indent;
-		color: $color-font-light;
-	}
 }
