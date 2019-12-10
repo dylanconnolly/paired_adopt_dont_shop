@@ -27,4 +27,8 @@ RSpec.describe "new shelter form", type: :feature do
     expect(page).to have_current_path("/shelters")
     expect(page).to have_content("Cats Are Devils")
   end
+
+  it "will display flash error message if all fields are not completed" do
+
+  end
 end
