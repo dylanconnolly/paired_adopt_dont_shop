@@ -37,22 +37,35 @@ RSpec.describe "shelter index page", type: :feature do
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
   end
 
-  it "has a link for each shelter to delete the shelter" do
+  describe "shelter delete" do
+    it "has a link for each shelter to delete the shelter" do
 
-    visit "/shelters"
+      visit "/shelters"
 
-    within("section[id='#{@shelter_1.id}']") do
-    click_link("Delete")
-    expect(current_path).to eq("/shelters")
+      within("section[id='#{@shelter_1.id}']") do
+      click_link("Delete")
+      expect(current_path).to eq("/shelters")
+      end
+
+      visit "/shelters"
+
+      within("section[id='#{@shelter_2.id}']") do
+      click_link("Delete")
+      end
+      expect(page).to_not have_content(@shelter_1.name)
+      expect(page).to_not have_content(@shelter_2.name)
     end
 
-    visit "/shelters"
+    it "doesn't allow shelter to be deleted if shelter has any pets with application in approved status" do
 
-    within("section[id='#{@shelter_2.id}']") do
-    click_link("Delete")
+      visit "/shelters"
+
+      within "##{@shelter_1.id}" do
+        click_link "Delete"
+      end
+
+      expect(page).to have_content("Can't delete shelter because there are pets pending adoption.")
     end
-    expect(page).to_not have_content(@shelter_1.name)
-    expect(page).to_not have_content(@shelter_2.name)
   end
 
   it "links to each shelter if the name is clicked" do
