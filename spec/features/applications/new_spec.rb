@@ -69,6 +69,48 @@ RSpec.describe "new application form" do
     expect(page).to have_content("Application successfully submitted!")
   end
 
+  it "displays an error message if user does not complete all fields" do
+    visit '/favorites'
+
+    click_on "Adopt Pets"
+
+    within "#pet-#{@pet_1.id}" do
+      page.check("pet_ids[]")
+    end
+
+    within "#pet-#{@pet_2.id}" do
+      page.check("pet_ids[]")
+    end
+
+      fill_in "name", with: "Dylan"
+      fill_in "address", with: "123 Main St"
+      fill_in "city", with: "Denver"
+      fill_in "state", with: "CO"
+      fill_in "zip", with: "80203"
+
+      click_on "Apply For Pets"
+
+    expect(page).to have_content("Please complete all fields on the form.")
+
+      fill_in "name", with: "Dylan"
+      fill_in "address", with: "123 Main St"
+      fill_in "city", with: "Denver"
+      fill_in "state", with: "CO"
+      fill_in "zip", with: "80203"
+      fill_in "phone", with: "5555555555"
+      fill_in "reason", with: "I love animals and my house is dog friendly."
+
+      within "#pet-#{@pet_2.id}" do
+        page.check("pet_ids[]")
+      end
+
+      click_on "Apply For Pets"
+
+    expect(page).to have_content("Application successfully submitted!")
+    expect(page).to have_css("#pet-#{@pet_1.id}")
+    expect(page).to_not have_css("#pet-#{@pet_2.id}")
+  end
+
   it "redirects to the favorits index page where there is a section listing pets with applications" do
 
     visit '/favorites'
