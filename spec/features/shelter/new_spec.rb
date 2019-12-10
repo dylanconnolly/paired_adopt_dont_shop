@@ -29,6 +29,15 @@ RSpec.describe "new shelter form", type: :feature do
   end
 
   it "will display flash error message if all fields are not completed" do
+    visit '/shelters/new'
 
+
+    fill_in "name", with: "Cats Are Devils"
+    fill_in "address", with: "123 Main St."
+    fill_in "city", with: "Seattle"
+
+    click_button("Create Shelter")
+
+    expect(page).to have_content("All fields must be completed")
   end
 end
