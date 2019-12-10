@@ -141,10 +141,12 @@ RSpec.describe Shelter, type: :model do
           application_2 = Application.create!(name: "Steve", address: "1273 Main", city: "Chicago", state: "IL", zip: "23832", phone: "12312314", reason: "I am bad owner")
           application_3 = Application.create!(name: "Bobert", address: "109481029 Main", city: "Fargo", state: "ND", zip: "78273", phone: "1234345555", reason: "I am ok owner")
 
-          application_1 << pet_1
-          application_2 << pet_1
-          application_3 << pet_3
-          application_3 << pet_2
+          application_1.pets << pet_1
+          application_2.pets << pet_1
+          application_2.pets << pet_2
+          application_3.pets << pet_3
+          application_3.pets << pet_2
+          application_3.pets << pet_1
 
         expect(shelter_1.count_of_applications).to eq(3)
         expect(shelter_2.count_of_applications).to eq(1)

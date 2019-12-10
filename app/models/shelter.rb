@@ -16,4 +16,12 @@ class Shelter < ApplicationRecord
   def average_rating
     shelter_reviews.average(:rating)
   end
+
+  def all_applications
+    Application.select(:id).joins(:pets).where("pets.shelter_id = #{self.id}")
+  end
+
+  def count_of_applications
+    all_applications.uniq.count
+  end
 end

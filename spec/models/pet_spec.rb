@@ -38,4 +38,26 @@ RSpec.describe Pet, type: :model do
 
     expect(pet_1.adoptable).to eq(true)
   end
+
+  describe "#application_ids" do
+    it "returns the id's for all applications for given pet" do
+
+      shelter = Shelter.create(name: "Blue Blue Barky",
+                                 address: "123 This Way",
+                                 city: "Denver",
+                                 state: "CO",
+                                 zip: "90204")
+
+      pet = Pet.create(name: "Rufus", image: "https://cdn.pixabay.com/photo/2018/05/07/10/48/husky-3380548_1280.jpg", approximate_age: "4", sex: "male", shelter: shelter)
+
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+      application_2 = Application.create!(name: "Greg", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am a owner")
+
+      application.pets << pet
+      application_2.pets << pet
+
+      expect(pet.application_ids)
+
+    end
+  end
 end
