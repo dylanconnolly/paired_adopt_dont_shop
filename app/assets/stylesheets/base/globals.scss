@@ -33,6 +33,7 @@ p {
 	color: $color-font-white;
 	font-size: 1rem;
 	font-family: "Roboto Slab", serif;
+	text-decoration: none;
 	cursor: pointer;
 }
 
@@ -42,16 +43,47 @@ p {
 	color: $color-background-dark;
 }
 
+.material-icons {
+	color: $color-font-very-light;
+	transition: 0.2s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		color: $color-background-dark;
+	}
+}
+
 .card-vertical {
 	@include card-1;
 	position: relative;
-	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: $color-font-white;
+	border: 1px solid $color-background-dark;
 	width: 215px;
 	margin-right: 1rem;
-	// border: 1px solid $color-background-dark;
+	aside {
+		margin-top: .4rem;
+		padding: 0 .6rem;
+	}
 	img {
 		object-fit: cover;
 		height: 200px;
 		width: 100%;
+	}
+	.pet-city {
+		font-size: 16px;
+	}
+	.btn-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		padding: 0 .4rem;
+		margin-top: .5rem;
+		button {
+			margin: 0 0 .3rem 0;
+			width: 100%;
+		}
 	}
 }
