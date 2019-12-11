@@ -3,6 +3,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
 }
 
 h1,
@@ -22,8 +23,96 @@ p {
 	margin: 0;
 }
 
+.page-template-1 {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.page-template-2 {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.header-container {
+	border: 1px solid red;
+}
+
+.container-rows {
+	display: flex;
+	flex-direction: row-reverse;
+	border: 1px solid $color-background-dark;
+	margin-bottom: .5rem;
+}
+
+.container-rows-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin-bottom: .5rem;
+}
+
+.container-columns {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: .5rem;
+	.shelter-card {
+		margin-bottom: 1rem;
+	}
+}
+
+.btn-cont-column {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+	width: 30vw;
+	.cont-1-title {
+		margin: 0 auto;
+	}
+	a {
+		text-align: center;
+	}
+}
+
+.btn-cont-row {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	justify-content: space-between;
+	a {
+		text-align: center;
+	}
+	i {
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	.btn-1,
+	.btn-2 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.btn-cont-column-2 {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+	.cont-1-title {
+		margin: 0 auto;
+	}
+	a {
+		text-align: center;
+	}
+}
+
 .btn-1,
 .btn-2 {
+	display: inline-block;
 	border: 0;
 	margin-top: 1rem;
 	margin-right: 0.5rem;
