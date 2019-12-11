@@ -8,4 +8,8 @@ class Pet < ApplicationRecord
     toggle(:adoptable)
     save
   end
+
+  def deletable?
+    !(PetApplication.pet_adopted?(self))
+  end
 end
