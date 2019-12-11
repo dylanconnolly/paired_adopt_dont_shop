@@ -1,0 +1,23 @@
+<article id="pet-<%= pet[:id] %>" class="pet-card" >
+  <%= image_tag pet[:image] %>
+  <aside>
+    <header>
+      <h2><%= link_to pet[:name], "/pets/#{pet[:id]}" %></h2>
+      <i class="material-icons bookmark">favorite</i>
+    </header>
+    <section class="pet-shelter">
+        <p><span class="bold">shelter:</span><%= link_to shelter[:name], shelter[:url_show] %></p>
+    </section>
+    <section class="pet-details">
+      <p>
+        <span class="bold">Age:</span> <%= pet[:age] %>, 
+        <span class="bold">Gender:</span> <%= pet[:sex] %>
+      </p>
+    </section>
+    <p class="pet-description">A sweetheart of a dog. Loves to cuddle and go for runs!</p>
+  </aside>
+  <div class="btn-container">
+    <%= link_to "Adopt", "", class:"btn-1" %>
+    <%= link_to "Details", "/pets/#{pet[:id]}", class:"btn-2" %>
+  </div>
+</article>

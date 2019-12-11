@@ -58,16 +58,16 @@ RSpec.describe "shelter pet index", type: :feature do
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    within("section[id='links #{@pet_1.id}']") do
-      click_link("Edit Pet")
+    within("#pet-links-#{@pet_1.id}") do
+      click_link("edit")
       expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
     end
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    within("section[id='links #{pet_4.id}']") do
-      click_link("Edit Pet")
-      expect(current_path).to eq("/pets/#{pet_4.id}/edit")
+    within("#pet-links-#{@pet_3.id}") do
+      click_link("edit")
+      expect(current_path).to eq("/pets/#{@pet_3.id}/edit")
     end
   end
 
@@ -77,15 +77,15 @@ RSpec.describe "shelter pet index", type: :feature do
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    within("section[id='links #{@pet_1.id}']") do
-      click_link("Delete Pet")
+    within("#pet-links-#{@pet_1.id}") do
+      click_link("delete")
       expect(current_path).to eq("/pets")
     end
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    within("section[id='links #{pet_4.id}']") do
-      click_link("Delete Pet")
+    within("#pet-links-#{pet_4.id}") do
+      click_link("delete")
     end
 
     expect(page).to_not have_content(@pet_1.name)

@@ -1,0 +1,126 @@
+// core
+
+.page-header {
+	position: relative;
+	z-index: 2;
+	height: 95vh;
+	transform: skewY(-3deg) translateY(-10vh);
+	overflow: hidden;
+	border-bottom: 8px solid $color-accent;
+	.content {
+		position: absolute;
+		z-index: 2;
+		top: 25vh;
+		right: 5vw;
+		width: 290px;
+		height: 200px;
+		transform: skewY(3deg);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.screen {
+		transition: 1s ease-in-out;
+		filter: brightness(88%);
+	}
+	.screen-white {
+		width: 100vw;
+		height: 100vw;
+		background-color: $color-font-white;
+	}
+	.btn-container {
+		display: flex;
+		justify-content: space-between;
+	}
+	h1 {
+		font-size: 52px;
+	}
+	img {
+		position: relative;
+		object-fit: cover;
+		width: 100vw;
+	}
+}
+
+.page-content {
+	transform: translateY(-40vh);
+	margin: 0 auto;
+	position: relative;
+	z-index: 2;
+	width: $content-width;
+	max-width: $max-width;
+}
+
+.our-mission {
+	position: fixed;
+	z-index: 1;
+	bottom: 12vh;
+	right: 5vw;
+	width: 30vw;
+}
+
+.instruction-block {
+	padding: .5rem 0;
+	margin-bottom: .3rem;
+}
+
+.header-lg {
+	font-size: 48px;
+}
+
+.featured-pets {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	h2 {
+		align-self: flex-start;
+	}
+	.pets-new-arrivals {
+		display: flex;
+		justify-content: flex-start;
+	}
+	.white {
+		color: $color-font-white;
+	}
+}
+
+.primary-footer {
+	position: relative;
+	z-index: 3;
+	height: 6rem;
+	width: 100%;
+	margin: 4rem auto 0 auto;
+	background-color: $color-background-dark;
+	border-top: 3px solid $color-accent;
+	.footer-content {
+		padding: 1rem 0;
+		width: 90%;
+		margin: 0 auto;
+	}
+	h2 {
+		color: $color-font-white;
+	}
+}
+
+.bookmark {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	color: $color-background-light;
+	background-color: $color-background-dark;
+	padding: 0.3rem;
+	&:hover {
+		color: $color-accent-2;
+	}
+}
+
+.featured-shelters {
+	width: 55vw;
+	margin-top: 3rem;
+	border-top: 1px solid $color-accent;
+	max-width: 1200px;
+}
+
+.section-header {
+	margin: 3rem 0 2rem 0;
+}

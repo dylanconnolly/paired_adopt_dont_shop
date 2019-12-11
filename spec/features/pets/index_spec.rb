@@ -39,15 +39,15 @@ RSpec.describe "pets index", type: :feature do
 
     visit '/pets'
 
-    within("section[id='links #{@pet_1.id}']") do
-      click_link("Edit Pet")
+    within("#pet-links-#{@pet_1.id}") do
+      click_link("edit")
       expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
     end
 
     visit '/pets'
 
-    within("section[id='links #{@pet_2.id}']") do
-      click_link("Edit Pet")
+    within("#pet-links-#{@pet_2.id}") do
+      click_link("edit")
       expect(current_path).to eq("/pets/#{@pet_2.id}/edit")
     end
   end
@@ -56,15 +56,16 @@ RSpec.describe "pets index", type: :feature do
 
     visit '/pets'
 
-    within("section[id='links #{@pet_1.id}']") do
-      click_link("Delete Pet")
+    within("#pet-links-#{@pet_1.id}") do
+      click_link("delete")
       expect(current_path).to eq("/pets")
     end
 
     visit '/pets'
 
-    within("section[id='links #{@pet_2.id}']") do
-      click_link("Delete Pet")
+    within("#pet-links-#{@pet_2.id}") do
+      click_link("delete")
+      expect(current_path).to eq("/pets")
     end
 
     expect(page).to_not have_content(@pet_1.name)

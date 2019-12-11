@@ -1,0 +1,142 @@
+// globals
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include font-title;
+	margin: 0;
+	color: $color-font;
+}
+
+p {
+	@include font-body;
+	color: $color-font;
+	margin: 0;
+}
+
+.page-template-1 {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.page-template-2 {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.header-container {
+	border: 1px solid red;
+}
+
+.container-rows {
+	display: flex;
+	flex-direction: row-reverse;
+	border: 1px solid $color-background-dark;
+	margin-bottom: .5rem;
+}
+
+.container-rows-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin-bottom: .5rem;
+}
+
+.container-columns {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: .5rem;
+	.shelter-card {
+		margin-bottom: 1rem;
+	}
+}
+
+.btn-cont-column {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+	width: 30vw;
+	.cont-1-title {
+		margin: 0 auto;
+	}
+	a {
+		text-align: center;
+	}
+}
+
+.btn-cont-row {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	justify-content: space-between;
+	a {
+		text-align: center;
+	}
+	i {
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	.btn-1,
+	.btn-2 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.btn-cont-column-2 {
+	border: 1px solid $color-background-dark;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+	.cont-1-title {
+		margin: 0 auto;
+	}
+	a {
+		text-align: center;
+	}
+}
+
+.btn-1,
+.btn-2 {
+	display: inline-block;
+	border: 0;
+	margin-top: 1rem;
+	margin-right: 0.5rem;
+	padding: 0.5rem 1.2rem;
+	background-color: $color-background-dark;
+	border: 1px solid $color-background-dark;
+	color: $color-font-white;
+	font-size: 1rem;
+	font-family: "Roboto Slab", serif;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn-2 {
+	border: 2px solid $color-background-dark;
+	background-color: $color-background-light;
+	color: $color-background-dark;
+}
+
+.material-icons {
+	color: $color-font-very-light;
+	transition: 0.2s ease-in-out;
+	&:hover {
+		cursor: pointer;
+		color: $color-background-dark;
+	}
+}

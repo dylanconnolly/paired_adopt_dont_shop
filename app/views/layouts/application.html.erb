@@ -3,7 +3,6 @@
   <head>
     <title>AdoptDontShop</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto+Slab:300,400&display=swap" rel="stylesheet">
@@ -15,12 +14,12 @@
     <nav class="primary-navbar">
       <div class="navbar-content">
         <main>
-          <i class="material-icons header-logo">pets</i>
-          <%= link_to "Shelters", "/shelters" %>
-          <%= link_to "Pets", "/pets" %>
+          <%= link_to "<i class='material-icons header-logo'>pets</i>".html_safe, "/" %>
+          <%= link_to "Shelters", "/shelters", class: "header-links" %>
+          <%= link_to "Pets", "/pets", class: "header-links" %>
         </main>
         <aside class="header-aside">
-          <%= link_to "Favorites: #{favorites.total_count}", '/favorites' %> </p>
+          <%= link_to "Favorites: #{favorites.total_count}", '/favorites' %>
           <p>Welcome, <span class="header-username">Guest</span></p>
         </aside>
       </div>
