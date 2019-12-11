@@ -1,11 +1,12 @@
 @import "./main.scss";
 
 .primary-navbar {
-	position: fixed;
+	position: sticky;
+	top: 0;
 	z-index: 5;
 	display: flex;
 	align-items: center;
-	height: auto;
+	height: 6vh;
 	width: 100vw;
 	background-color: $color-background-dark;
 	.navbar-content {
@@ -17,7 +18,7 @@
 	}
 	.header-logo {
 		margin: 0;
-		padding: 0.5rem 0 0.35rem 0;
+		padding: 0.5rem 0 0.85rem 0;
 		font-size: 35px;
 		background-color: white;
 		color: $color-background-dark;
@@ -33,7 +34,7 @@
 		display: flex;
 		flex-direction: row-reverse;
 		height: 100%;
-		margin-bottom: .2rem;
+		margin-bottom: .6rem;
 		p,
 		a {
 			color: $color-font-white;
