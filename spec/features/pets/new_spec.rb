@@ -50,6 +50,7 @@ RSpec.describe "new pet view" do
 
     click_button "Add Pet"
 
+
     expect(page).to have_content("Pet creation failed: please complete all fields on the form.")
 
     fill_in "image", with: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg"
@@ -57,6 +58,8 @@ RSpec.describe "new pet view" do
     fill_in "description", with: "lovely little pupper"
     fill_in "approximate_age", with: "6"
     select "female", :from => :sex
+
+    click_button "Add Pet"
 
     expect(page).to have_content("Pet created successfully!")
   end
