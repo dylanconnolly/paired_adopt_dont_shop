@@ -4,9 +4,9 @@
   <section class="container-rows-wrap">
   <% @pets.each do |pet| %>
     <section class="container-columns">
-      <section id="links <%= pet.id %>" class="btn-cont-row" >
-        <%= link_to "<i class='material-icons'>edit</i>".html_safe, "/pets/#{pet.id}/edit", class: "btn-1" %>
-        <%= link_to "<i class='material-icons'>delete</i>".html_safe, "/pets/#{pet.id}", method: :delete, class: "btn-1" %>
+      <section id="pet-links-<%= pet.id %>" class="btn-cont-row" >
+        <%= link_to "edit", "/pets/#{pet.id}/edit", class: "btn-1" %>
+        <%= link_to "delete", "/pets/#{pet.id}", method: :delete, class: "btn-1" %>
       </section>
       <%= render partial: 'shared/petcard', 
           locals: {
