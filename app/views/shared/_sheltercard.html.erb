@@ -18,8 +18,8 @@
       girls big ol pupper bork shoober big ol pupper heckin angery woofer.
     </p>
     <div class="btn-container">
-      <button class="btn-1">Learn More</button>
-      <button class="btn-2">See Our Pets</button>
+      <%= link_to 'Learn More', "/shelters/#{shelter[:id]}", class: "btn-1" %>
+      <%= link_to 'See Out Pets', "/shelters/#{shelter[:id]}/pets", class: "btn-2" %>
     </div>
   </aside>
   <aside class="shelter-location">
