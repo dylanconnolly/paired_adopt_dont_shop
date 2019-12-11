@@ -41,6 +41,7 @@ class PetsController < ApplicationController
 
     if pet.deletable? == true
       Pet.destroy(pet.id)
+      favorites.remove(pet.id)
       redirect_to '/pets'
     else
       flash[:error] = "Cannot delete pet as the pet has been approved for adoption."
