@@ -2,7 +2,7 @@
   <%= image_tag pet[:image] %>
   <aside>
     <header>
-      <h2><%= pet[:name] %> <span class="pet-city">, <%= shelter[:city] %></span></h2>
+      <h2><%= link_to pet[:name], "/pets/#{pet[:id]}" %></h2>
       <i class="material-icons bookmark">favorite</i>
     </header>
     <section class="pet-shelter">
