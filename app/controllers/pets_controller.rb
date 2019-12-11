@@ -12,16 +12,22 @@ class PetsController < ApplicationController
   end
 
   def new
-    @shelter_id = params[:id]
+    @shelter = Shelter.find(params[:id])
 
     @list = ["male", "female"]
   end
 
   def create
     shelter = Shelter.find(params[:id])
-    shelter.pets.create(pet_params)
-
-    redirect_to "/shelters/#{shelter.id}/pets"
+    shelter.pets.new(pet_params)
+    if shelter.save
+      flash[:success] = "Pet created successfully!"
+      redirect_to "/shelters/#{shelter.id}/pets"
+    else
+      flash[:error] = "Pet creation failed: please complete all fields on the form."
+      @shelter = shelter
+      render :new
+    end
   end
 
   def edit

@@ -1,6 +1,6 @@
 <h2>Add Pet</h2>
 
-<%= form_tag "/shelters/#{@shelter_id}/pets" do %>
+<%= form_tag "/shelters/#{@shelter.id}/pets" do %>
   <%= label_tag :image %>
   <%= text_field_tag :image %>
   <%= label_tag :name %>
