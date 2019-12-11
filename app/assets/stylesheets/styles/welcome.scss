@@ -4,7 +4,7 @@
 	position: relative;
 	z-index: 2;
 	height: 95vh;
-	transform: skewY(-3deg) translateY(-5vh);
+	transform: skewY(-3deg) translateY(-10vh);
 	overflow: hidden;
 	border-bottom: 8px solid $color-accent;
 	.content {
@@ -43,7 +43,7 @@
 }
 
 .page-content {
-	transform: translateY(-27vh);
+	transform: translateY(-40vh);
 	margin: 0 auto;
 	position: relative;
 	z-index: 2;
