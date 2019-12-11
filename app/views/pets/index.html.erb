@@ -1,19 +1,31 @@
 <h2>All Pets</h2>
 
-<div class="grid-container">
+<div class="page-template-2">
+  <section class="container-rows-wrap">
   <% @pets.each do |pet| %>
-    <div class="grid-item">
-      <img src="<%= pet.image %>" width=350px height=350px object-fit: cover>
-      <h3><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
-      <p>
-        Approximate age: <%= pet.approximate_age %><br>
-        Sex: <%= pet.sex %><br>
-        Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %>
-      </p>
-      <section id="links <%= pet.id %>">
-        <%= link_to "Edit Pet", "/pets/#{pet.id}/edit" %>
-        <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %>
+    <section class="container-columns">
+      <section id="links <%= pet.id %>" class="btn-cont-row" >
+        <%= link_to "<i class='material-icons'>edit</i>".html_safe, "/pets/#{pet.id}/edit", class: "btn-1" %>
+        <%= link_to "<i class='material-icons'>delete</i>".html_safe, "/pets/#{pet.id}", method: :delete, class: "btn-1" %>
       </section>
-    </div>
+      <%= render partial: 'shared/petcard', 
+          locals: {
+                    shelter: {
+                      id: pet.shelter.id,
+                      url_show: "/shelters/#{pet.shelter.id}",
+                      name: pet.shelter.name,
+                      city: pet.shelter.city
+                    },
+                    pet: {
+                      id: pet.id,
+                      image: pet.image,
+                      name: pet.name,
+                      age: pet.approximate_age,
+                      sex: pet.sex,
+                    }
+                  }
+      %>
+    </section>
   <% end %>
+  </section>
 <div>
