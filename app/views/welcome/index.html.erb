@@ -46,7 +46,7 @@
 
   <section class="featured-shelters">
     <h2 class="section-header">Popular Shelters</h2>
-    <section id="welcome-index-shelters" class="content-1">
+    <section id="welcome-index-shelters" class="container-columns">
       <% @shelters.first(4).each do |shelter| %>
         <%= render partial: 'shared/sheltercard',
           locals: {
