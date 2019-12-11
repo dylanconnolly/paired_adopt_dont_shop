@@ -37,9 +37,13 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    Pet.destroy(params[:pet_id])
+    pet = Pet.find(params[:pet_id])
 
-    redirect_to '/pets'
+    if pet.deletable? == true
+      Pet.destroy(pet.id)
+      redirect_to '/pets'
+    else
+      flash[:error] = ""
   end
 
   private
