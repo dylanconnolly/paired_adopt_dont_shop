@@ -1,0 +1,42 @@
+<article id="shelter-<%= shelter[:id] %>" class="shelter-card" >
+  <aside class="shelter-primary">
+    <h2 class="shelter-title"><%= shelter[:name] %></h2>
+    <p class="shelter-phrase">The Barkin Best Dogs!</p>
+    <section class="shelter-ratings">
+      <div>
+        <i class="material-icons">thumb_up</i>
+        <p>31</p>
+      </div>
+      <div>
+        <i class="material-icons">thumb_down</i>
+        <p>7</p>
+      </div>
+    </section>
+    <p class="shelter-description">
+      Doggo ipsum  Shoob lotsa pats long water shoob most angery pupper 
+      I have ever seen yapper, very much ruin diet. Heckin good boys and 
+      girls big ol pupper bork shoober big ol pupper heckin angery woofer.
+    </p>
+    <div class="btn-container">
+      <%= link_to 'Learn More', "/shelters/#{shelter[:id]}", class: "btn-1" %>
+      <%= link_to 'See Out Pets', "/shelters/#{shelter[:id]}/pets", class: "btn-2" %>
+    </div>
+  </aside>
+  <aside class="shelter-location">
+    <header>
+      <div class="location-header">
+        <h4>Location</h4>
+        <i class="material-icons bookmark">bookmark_border</i>
+      </div>
+      <ul>
+        <li><%= shelter[:address] %></li>
+        <li><%= shelter[:city] %>, <%= shelter[:state] %></li>
+        <li><%= shelter[:zip] %></li>
+      </ul>
+    </header>
+    <footer class="shelter-contact">
+      <p class="emphasis"># 173-555-8831</p>
+      <p class="emphasis">bluebluebarky@bark.com</p>
+    </footer>
+  </aside>
+</article>

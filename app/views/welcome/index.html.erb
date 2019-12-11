@@ -1,111 +1,104 @@
 <section class="page-template-1">
   <header class="page-header">
-    <!-- some worthwhile interesting banner content -->
-    <h1>Adopt Dont Shop</h2>
+    <div class="content">
+      <div>
+        <h1>Adopt Dont Shop</h2>
+        <p>
+          Sort through hundreds of humane shelters for the perfect pup who is just right for you.
+        </p>
+      </div>
+      <section class="btn-container">
+        <%= link_to 'View Shelters', "/shelters", class: "btn-1"  %>
+        <%= link_to 'View Pets', "/pets", class: "btn-2"  %>
+      </section>
+    </div>
+    <div class="screen">    
+      <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e456567749752c7bd391/rhodesian-ridgeback-2727035.jpg" />
+      <div class="screen-white"></div>
+    </div>
   </header>
 
-  <h2 class="section-header header-1">Popular Shelters</h2>
-  <section id="welcome-index-shelters" class="content-1">
-    <% @shelters.each do |shelter| %>
-      <article id="shelter-<%= shelter.id %>" class="shelter" >
-        <aside class="shelter-primary">
-          <h2 class="shelter-title"><%= shelter.name %></h2>
-          <p class="shelter-phrase">The Barkin Best Dogs!</p>
-          <section class="shelter-ratings">
-            <div>
-              <i class="material-icons">thumb_up</i>
-              <p>31</p>
-            </div>
-            <div>
-              <i class="material-icons">thumb_down</i>
-              <p>7</p>
-            </div>
-          </section>
-          <p class="shelter-description">
-            Doggo ipsum  Shoob lotsa pats long water shoob most angery pupper 
-            I have ever seen yapper, very much ruin diet. Heckin good boys and 
-            girls big ol pupper bork shoober big ol pupper heckin angery woofer.
-          </p>
-          <div class="btn-container">
-            <button class="btn-1">Learn More</button>
-            <button class="btn-2">See Our Pets</button>
-          </div>
-        </aside>
-        <aside class="shelter-location">
-          <header>
-            <div class="location-header">
-              <h4>Location</h4>
-              <i class="material-icons bookmark">bookmark_border</i>
-            </div>
-            <ul>
-              <li><%= shelter.address %></li>
-              <li><%= shelter.city %>, <%= shelter.state %></li>
-              <li><%= shelter.zip %></li>
-            </ul>
-          </header>
-          <footer class="shelter-contact">
-            <p class="emphasis"># 173-555-8831</p>
-            <p class="emphasis">bluebluebarky@bark.com</p>
-          </footer>
-        </aside>
-      </article>
-    <% end %>
+  <main class=page-content>
+  <section class="featured-pets">
+    <h2 class="section-header white">New Arrivals</h2>
+    <section id="welcome-index-pets" class="pets-new-arrivals">
+      <% @pets.first(3).each do |pet| %>
+      <%= render partial: 'shared/petcard', 
+          locals: {
+                    shelter: {
+                      id: pet.shelter.id,
+                      url_show: "/shelters/#{pet.shelter.id}",
+                      name: pet.shelter.name,
+                      city: pet.shelter.city
+                    },
+                    pet: {
+                      id: pet.id,
+                      image: pet.image,
+                      name: pet.name,
+                      age: pet.approximate_age,
+                      sex: pet.sex,
+                    }
+                  }
+      %>
+      <% end %>
+    </section>
   </section>
 
-  <h2 class="section-header header-2">Our Mission</h2>
-  <section class="content-2">
-    <article class="instruction-block">
-      <h3>What our mission is</h3>
-      <p>
-        Some words, or maybe a lot of words, describing what our mission is
-        and why people should be encouraged to adopt previously owned animals
-        instead of buying new ones from puppy mills.
-      </p>
-    </article>
-    <article class="instruction-block">
-      <h3>1.) Do This</h3>
-      <p>A short little summary</p>
-    </article>
-    <article class="instruction-block">
-      <h3>2.) Do That</h3>
-      <p>Some more meaningul words</p>
-    </article>
-    <article class="instruction-block">
-      <h3>3.) A Call to Action</h3>
-      <p>Motivate them with filler content</p>
-    </article>
-    <article class="instruction-block">
-      <h3>4.) Finally, a conclusion</h3>
-      <p>Hooray, you (or they I suppose) did it!</p>
-    </article>
+  <section class="featured-shelters">
+    <h2 class="section-header">Popular Shelters</h2>
+    <section id="welcome-index-shelters" class="container-columns">
+      <% @shelters.first(4).each do |shelter| %>
+        <%= render partial: 'shared/sheltercard',
+          locals: {
+            shelter: {
+              id: shelter.id,
+              name: shelter.name,
+              # phrase: shelter.phrase,
+              # description: shelter.description,ß
+              address: shelter.address,
+              city: shelter.city,
+              state: shelter.state,
+              zip: shelter.zip
+            }
+          }
+        %>
+      <% end %>
+    </section>
   </section>
+</main>
 
-  <h2 class="section-header header-3">New Arrivals</h2>
-  <section id="welcome-index-pets" class="content-3">
-    <% @pets.each do |pet| %>
-      <article id="pet-<%= pet.id %>" class="pet" >
-        <%= image_tag pet.image %>
-        <aside>
-          <header>
-            <h2><%= pet.name %>, <span class="pet-city"> <%= pet.shelter.city %></span></h2>
-            <i class="material-icons bookmark">favorite</i>
-          </header>
-          <section class="pet-shelter">
-              <p><span class="bold">shelter:</span> <%= pet.shelter.name %></p>
-          </section>
-          <section class="pet-details">
-            <p>
-              <span class="bold">Age:</span> <%= pet.approximate_age %>, 
-              <span class="bold">Gender:</span> <%= pet.sex %>
-            </p>
-          </section>
-          <p class="pet-description">A sweetheart of a dog. Loves to cuddle and go for runs!</p>
-          <div class="btn-container">
-            <button class="btn-1">Adopt</button>
-            <button class="btn-2">Details</button>
-          </div>
-        </aside>
+  <aside class="our-mission">
+    <h1 class="section-header header-lg">Our Mission</h1>
+    <section class="content">
+      <article class="instruction-block">
+        <h3>No More Puppy Mills</h3>
+        <p>
+          We are against the practice of rapidly breeding dogs for sale. Our shelters consist of pups, 
+          young and old, who are looking for a home and a second chance. They are previously abandoned, 
+          abused, and forgotten. But with your help, they can have another chance of finding a new loving home.
+        </p>
       </article>
-    <% end %>
-  </section>
+      <article class="instruction-block">
+        <h3>1.) Find</h3>
+        <p>
+          Sort through thousands of wonderful pets. See their photo, read about them, and when you're ready
+          apply to adopt them.
+        </p>
+      </article>
+      <article class="instruction-block">
+        <h3>2.) Adopt</h3>
+        <p>
+          The adoption process is simple and straightforward. Just fill out a form, answer a few questions,
+          and your application will be added to the pool.
+        </p>
+      </article>
+      <article class="instruction-block">
+        <h3>3.) Love</h3>
+        <p>
+          Once your adoption goes through you will be notified and a pick-up date will be scheduled
+          to pick up the newest member of your family!
+        </p>
+      </article>
+    </section>
+  </aside>
 </section>
