@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
 
     favorites.add_pet(pet.id)
     session[:favorites] = favorites.contents
-    flash[:notice] = "You have successfully added #{pet.name} to your favorites!"
+    flash[:success] = "You have added #{pet.name} to your favorites!"
     redirect_to "/pets/#{pet.id}"
   end
 
