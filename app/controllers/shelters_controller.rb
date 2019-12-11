@@ -13,9 +13,14 @@ class SheltersController < ApplicationController
   end
 
   def create
-    shelter = Shelter.create(shelter_params)
+    shelter = Shelter.new(shelter_params)
 
-    redirect_to '/shelters'
+    if shelter.save
+      redirect_to '/shelters'
+    else
+      flash[:error] = "Please complete all fields on the form."
+      render :new
+    end
   end
 
   def edit
@@ -23,19 +28,27 @@ class SheltersController < ApplicationController
   end
 
   def update
-    shelter = Shelter.find(params[:id])
-
-    shelter.update(shelter_params)
-
-    shelter.save
-
-    redirect_to "/shelters/#{shelter.id}"
+    @shelter = Shelter.find(params[:id])
+    
+    if @shelter.update(shelter_params)
+      redirect_to "/shelters/#{@shelter.id}"
+      flash[:success] = "Shelter successfully updated!"
+    else
+      flash[:error] = "Please complete all fields on the form."
+      render :edit
+    end
   end
 
   def destroy
-    Shelter.destroy(params[:id])
+    shelter = Shelter.find(params[:id])
 
-    redirect_to '/shelters'
+    if shelter.pets_with_approved_applications.count == 0
+      Shelter.destroy(params[:id])
+      redirect_to '/shelters'
+    else
+      flash[:error] = "Cannot delete shelter due to one or more pets having approved applications."
+      redirect_back(fallback_location: "/shelters")
+    end
   end
 
   def index_pets

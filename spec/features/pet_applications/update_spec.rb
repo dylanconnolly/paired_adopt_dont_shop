@@ -18,6 +18,7 @@ RSpec.describe "pet applications update action" do
     @pet_application_for_pet_1 = PetApplication.find_by(pet_id: @pet_1.id, application_id: @application.id)
     @pet_application_for_pet_2 = PetApplication.find_by(pet_id: @pet_2.id, application_id: @application.id)
   end
+
   it "changes pet application approved column to true" do
 
     visit "/applications/#{@application.id}"

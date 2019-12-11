@@ -10,6 +10,12 @@
 <p>State: <%= @shelter.state %><p>
 <p>Zip: <%= @shelter.zip %><p>
 
+<section id="statistics">
+  <p> Pets: <%= @shelter.count_of_pets %></p>
+  <p> Average rating: <%= @shelter.average_rating %></p>
+  <p> Applications: <%= @shelter.count_of_applications %></p>
+</section>
+
 <section class="reviews">
   <h2>Reviews</h2>
   <%= link_to "Add Review", "/shelters/#{@shelter.id}/new_review" %>

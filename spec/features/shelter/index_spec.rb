@@ -37,22 +37,60 @@ RSpec.describe "shelter index page", type: :feature do
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/edit")
   end
 
-  it "has a link for each shelter to delete the shelter" do
+  describe "shelter delete" do
+    it "has a link for each shelter to delete the shelter" do
 
-    visit "/shelters"
+      visit "/shelters"
 
-    within("section[id='#{@shelter_1.id}']") do
-    click_link("Delete")
-    expect(current_path).to eq("/shelters")
+      within("section[id='#{@shelter_1.id}']") do
+      click_link("Delete")
+      expect(current_path).to eq("/shelters")
+      end
+
+      visit "/shelters"
+
+      within("section[id='#{@shelter_2.id}']") do
+      click_link("Delete")
+      end
+      expect(page).to_not have_content(@shelter_1.name)
+      expect(page).to_not have_content(@shelter_2.name)
     end
 
-    visit "/shelters"
+    it "doesn't allow shelter to be deleted if shelter has any pets with application in approved status" do
 
-    within("section[id='#{@shelter_2.id}']") do
-    click_link("Delete")
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << @pet_1
+
+      visit "/applications/#{application.id}"
+
+      within "#pet-#{@pet_1.id}" do
+        click_link "Approve Adoption"
+      end
+
+      visit "/shelters"
+
+      within "##{@shelter_1.id}" do
+        click_link "Delete"
+      end
+
+      expect(page).to have_content("Cannot delete shelter due to one or more pets having approved applications.")
     end
-    expect(page).to_not have_content(@shelter_1.name)
-    expect(page).to_not have_content(@shelter_2.name)
+
+    it "allows shelter to be deleted if no pets having approved applications, pets are deleted with shelter" do
+
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << @pet_1
+
+      visit "/shelters"
+
+      within "##{@shelter_1.id}" do
+        click_link "Delete"
+      end
+
+      expect(page).to_not have_content(@shelter_1.id)
+    end
   end
 
   it "links to each shelter if the name is clicked" do
