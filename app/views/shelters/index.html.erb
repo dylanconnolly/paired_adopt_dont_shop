@@ -1,14 +1,30 @@
-<header class="sub-header">
-  <h1>Shelters</h1>
-  <%= link_to "New Shelter", "/shelters/new" %>
-</header>
-
-<% @shelters.each do |shelter| %>
-<section class="shelter">
-    <h3><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></h3>
-    <%= link_to "Edit", "/shelters/#{shelter.id}/edit" %>
-    <section id="<%= shelter.id %>">
-      <%= link_to "Delete", "/shelters/#{shelter.id}", method: :delete %>
-    </section>
+<section class="page-template-2">
+  <header class="header-container">
+    <h1>Shelters</h1>
+    <%= link_to "New Shelter", "/shelters/new" %>
+  </header>
+    <% @shelters.each do |shelter| %>
+    <section class="container-rows">
+      <%= render partial: 'shared/sheltercard',
+        locals: {
+          shelter: {
+            id: shelter.id,
+            name: shelter.name,
+            # phrase: shelter.phrase,
+            # description: shelter.description,
+            address: shelter.address,
+            city: shelter.city,
+            state: shelter.state,
+            zip: shelter.zip
+          }
+        }
+      %>
+      <section class="btn-cont-column" id="<%= shelter.id %>">
+        <h3 class="cont-1-title">Navigation</h3>
+        <%= link_to "#{shelter.name}", "/shelters/#{shelter.id}", class: "btn-2" %>
+        <%= link_to "Edit", "/shelters/#{shelter.id}/edit", class: "btn-1" %>
+        <%= link_to "Delete", "/shelters/#{shelter.id}", method: :delete, class: "btn-1" %>
+      </section>
   </section>
-<% end %>
+  <% end %>
+</section>
