@@ -37,9 +37,15 @@ class PetsController < ApplicationController
   def update
     # request_path = URI(request.referer).path
     pet = Pet.find(params[:pet_id])
-    pet.update(pet_params)
 
-    redirect_to "/pets/#{pet.id}"
+    if pet.update(pet_params)
+      flash[:success] = "Pet update successful!"
+      redirect_to "/pets/#{pet.id}"
+    else
+      flash[:error] = "Pet update failed: please complete all fields on the form."
+      @pet = pet
+      render :edit
+    end
   end
 
   def destroy

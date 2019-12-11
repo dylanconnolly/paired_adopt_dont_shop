@@ -36,4 +36,23 @@ RSpec.describe "edit pet form" do
     expect(page).to have_content("Yung boy")
     expect(page).to_not have_content("Rufus")
   end
+
+  it "displays flash message upon success/failure updating" do
+
+    visit "/pets/#{@pet_1.id}/edit"
+
+    fill_in :name, with: ""
+    fill_in :approximate_age, with: "1"
+    fill_in :description, with: "Yung boy"
+
+    click_button("Update Details")
+
+    expect(page).to have_content("Pet update failed: please complete all fields on the form.")
+
+    fill_in :name, with: "Scrappy"
+
+    click_button "Update Details"
+
+    expect(page).to have_content("Pet update successful!")
+  end
 end
