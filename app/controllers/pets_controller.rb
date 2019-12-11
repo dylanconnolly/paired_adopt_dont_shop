@@ -43,7 +43,9 @@ class PetsController < ApplicationController
       Pet.destroy(pet.id)
       redirect_to '/pets'
     else
-      flash[:error] = ""
+      flash[:error] = "Cannot delete pet as the pet has been approved for adoption."
+      redirect_to URI(request.referer).path
+    end
   end
 
   private
