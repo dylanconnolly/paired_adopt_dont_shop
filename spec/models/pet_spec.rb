@@ -61,7 +61,7 @@ RSpec.describe Pet, type: :model do
     end
   end
 
-  describe "#deletable" do
+  describe "#deletable?" do
     it "queries the database to see if pet has any approved applications" do
 
       shelter = Shelter.create(name: "Blue Blue Barky",
@@ -78,11 +78,11 @@ RSpec.describe Pet, type: :model do
 
       pet_app = PetApplication.create!(pet_id: pet.id, application_id: application.id, approved: true)
 
-      expect(pet.deletable).to eq(false)
+      expect(pet.deletable?).to eq(false)
 
       pet_app.update(approved: false)
 
-      expect(pet.deletable).to eq(true)
+      expect(pet.deletable?).to eq(true)
     end
   end
 end
