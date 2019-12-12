@@ -33,10 +33,8 @@
       </section>
       <h2>Pets With Applications</h2>
       <section id="application-pets">
-        <% @applications.each do |application| %>
-        <% application.pets.each do |pet| %>
+        <% @pet_apps.each do |pet| %>
         <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-        <% end %>
         <% end %>
       </section>
     </section>

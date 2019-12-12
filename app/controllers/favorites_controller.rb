@@ -12,6 +12,8 @@ class FavoritesController < ApplicationController
   def index
     @applications = Application.all
     @pets = Pet.where(id: favorites.pets)
+
+    @pet_apps = Pet.applied_for
   end
 
   def destroy
