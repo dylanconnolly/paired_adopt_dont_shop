@@ -6,12 +6,12 @@
 <div class="grid-container">
   <% @pets.each do |pet| %>
     <div class="grid-item">
+      <% if pet.adoptable == true %>
       <section id="pet-links-<%= pet.id %>" class="btn-cont-row" >
         <%= link_to "edit", "/pets/#{pet.id}/edit", class: "btn-1" %>
         <%= link_to "delete", "/pets/#{pet.id}", method: :delete, class: "btn-1" %>
       </section>
-      <% if pet.adoptable == true %>
-      <%= render partial: 'shared/petcard', 
+      <%= render partial: 'shared/petcard',
           locals: {
                     shelter: {
                       id: pet.shelter.id,
