@@ -1,22 +1,44 @@
-Favorites
+<h2>Favorites</h2>
 
-<% if @pets.count == 0 %>
-  <p>You do not have any favorite pets.</p>
-<% end %>
-<%= link_to "Remove All Favorites", "/favorites", method: :delete %>
-<%= link_to "Adopt Pets", "/applications/new" %>
-<% @pets.each do |pet| %>
-  <section class="fav-pet" id="pet-<%= pet.id %>">
-    <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
-    <%= image_tag(pet.image) %>
-    <%= link_to "Remove From Favorites", "/favorites/#{pet.id}", method: :delete %>
-  </section>
-<% end %>
-<h2>Pets With Applications</h2>
-<section id="application-pets">
-  <% @applications.each do |application| %>
-    <% application.pets.each do |pet| %>
-      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-    <% end %>
+<div class="page-template-2">
+  <% if @pets.count == 0 %>
+    <p>You do not have any favorite pets.</p>
   <% end %>
-</section>
+    <%= link_to "Remove All Favorites", "/favorites", method: :delete, class: "btn-1" %>
+    <%= link_to "Adopt Pets", "/applications/new", class: "btn-1"%>
+    <section class="container_rows-wrap">
+    <% @pets.each do |pet| %>
+    <section class="container-columns">
+        <section class="btn-cont-row" id="favorite-<%= pet.id %>">
+
+          <%= link_to "Remove From Favorites", "/favorites/#{pet.id}", method: :delete, class: "btn-1" %>
+        </section>
+        <%= render partial: 'shared/petcard',
+        locals: {
+                  shelter: {
+                    id: pet.shelter.id,
+                    url_show: "/shelters/#{pet.shelter.id}",
+                    name: pet.shelter.name,
+                    city: pet.shelter.city
+                  },
+                  pet: {
+                    id: pet.id,
+                    image: pet.image,
+                    name: pet.name,
+                    age: pet.approximate_age,
+                    sex: pet.sex,
+                  }
+                }
+              %>
+      <% end %>
+      </section>
+    </section>
+      <h2>Pets With Applications</h2>
+      <section id="application-pets">
+        <% @applications.each do |application| %>
+          <% application.pets.each do |pet| %>
+            <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+          <% end %>
+        <% end %>
+        </section>
+</div>

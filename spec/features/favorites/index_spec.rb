@@ -71,7 +71,7 @@ RSpec.describe "favorite pets index page", type: :feature do
 
     visit '/favorites'
 
-    within "#pet-#{@pet_1.id}" do
+    within "#favorite-#{@pet_1.id}" do
       click_on "Remove From Favorites"
     end
 
