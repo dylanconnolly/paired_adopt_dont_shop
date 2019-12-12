@@ -96,11 +96,17 @@ RSpec.describe "shelter index page", type: :feature do
   it "links to each shelter if the name is clicked" do
     visit '/shelters'
 
-    click_link("#{@shelter_1.name}")
+    within "##{@shelter_1.id}" do
+      click_link("#{@shelter_1.name}")
+    end
     expect(current_path).to eq("/shelters/#{@shelter_1.id}")
 
     visit '/shelters'
-    click_link("#{@shelter_1.name}")
-    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+
+    within "##{@shelter_2.id}" do
+      click_link("#{@shelter_2.name}")
+    end
+
+    expect(current_path).to eq("/shelters/#{@shelter_2.id}")
   end
 end
