@@ -25,7 +25,11 @@ Sex: <%= @pet.sex %><br>
 <% if @pet.applications.count == 0 %>
 <p>There are no applications to adopt this pet.</p>
 <% end %>
+<ul>
 <% @pet.applications.each do |application| %>
-  <%= link_to "#{application.name}", "/applications/#{application.id}" %>
+  <li>
+    <%= link_to "#{application.name}", "/applications/#{application.id}" %>
+  </li>
 <% end %>
+</ul>
 </section>
