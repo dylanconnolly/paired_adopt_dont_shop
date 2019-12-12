@@ -1,7 +1,7 @@
 <section class="page-template-2">
   <header class="header-container">
     <h1>Shelters</h1>
-    <%= link_to "New Shelter", "/shelters/new" %>
+    <%= link_to "New Shelter", "/shelters/new", class: "btn-1" %>
   </header>
     <% @shelters.each do |shelter| %>
     <section class="container-rows">
@@ -9,7 +9,7 @@
         locals: {
           shelter: {
             id: shelter.id,
-            name: shelter.name,
+            name: (link_to "#{shelter.name}", "/shelters/#{shelter.id}"),
             # phrase: shelter.phrase,
             # description: shelter.description,
             address: shelter.address,

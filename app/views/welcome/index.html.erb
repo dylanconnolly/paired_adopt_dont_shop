@@ -12,7 +12,7 @@
         <%= link_to 'View Pets', "/pets", class: "btn-2"  %>
       </section>
     </div>
-    <div class="screen">    
+    <div class="screen">
       <img src="https://pixabay.com/get/54e7d7444a51a914ea9d8579c22e317c173ec3e456567749752c7bd391/rhodesian-ridgeback-2727035.jpg" />
       <div class="screen-white"></div>
     </div>
@@ -23,7 +23,7 @@
     <h2 class="section-header white">New Arrivals</h2>
     <section id="welcome-index-pets" class="pets-new-arrivals">
       <% @pets.first(3).each do |pet| %>
-      <%= render partial: 'shared/petcard', 
+      <%= render partial: 'shared/petcard',
           locals: {
                     shelter: {
                       id: pet.shelter.id,
@@ -52,7 +52,7 @@
           locals: {
             shelter: {
               id: shelter.id,
-              name: shelter.name,
+              name: (link_to "#{shelter.name}", "/shelters/#{shelter.id}"),
               # phrase: shelter.phrase,
               # description: shelter.description,ß
               address: shelter.address,
@@ -73,8 +73,8 @@
       <article class="instruction-block">
         <h3>No More Puppy Mills</h3>
         <p>
-          We are against the practice of rapidly breeding dogs for sale. Our shelters consist of pups, 
-          young and old, who are looking for a home and a second chance. They are previously abandoned, 
+          We are against the practice of rapidly breeding dogs for sale. Our shelters consist of pups,
+          young and old, who are looking for a home and a second chance. They are previously abandoned,
           abused, and forgotten. But with your help, they can have another chance of finding a new loving home.
         </p>
       </article>

@@ -65,9 +65,9 @@ RSpec.describe "shelter pet index", type: :feature do
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    within("#pet-links-#{@pet_3.id}") do
+    within("#pet-links-#{pet_4.id}") do
       click_link("edit")
-      expect(current_path).to eq("/pets/#{@pet_3.id}/edit")
+      expect(current_path).to eq("/pets/#{pet_4.id}/edit")
     end
   end
 
