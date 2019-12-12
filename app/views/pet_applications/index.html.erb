@@ -1,0 +1,8 @@
+<p>Applications</p>
+<% if @pet_applications.count == 0 %>
+  There are no applications to adopt this pet.
+<% end %>
+
+<% @pet_applications.each do |pet_app| %>
+  <%= link_to "#{pet_app.application.name}", "/applications/#{pet_app.application_id}}" %>
+<% end %>

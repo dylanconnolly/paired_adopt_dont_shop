@@ -20,7 +20,7 @@ Sex: <%= @pet.sex %><br>
   Adoptable: <%= @pet.adoptable %>
 <% end %>
 
-<p>Applicants:</p>
+<p><%= link_to "Applicants:", "/pets/#{@pet.id}/applications" %></p>
 <section id="applications">
 <% if @pet.applications.count == 0 %>
 <p>There are no applications to adopt this pet.</p>
