@@ -8,4 +8,13 @@ class Pet < ApplicationRecord
     toggle(:adoptable)
     save
   end
+
+  def deletable?
+    !(PetApplication.pet_adopted?(self))
+  end
+
+  def self.applied_for
+    pet_ids = PetApplication.select(:pet_id).distinct.pluck(:pet_id)
+    Pet.where(id: pet_ids)
+  end
 end

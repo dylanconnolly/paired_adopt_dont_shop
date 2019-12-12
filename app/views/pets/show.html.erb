@@ -20,12 +20,16 @@ Sex: <%= @pet.sex %><br>
   Adoptable: <%= @pet.adoptable %>
 <% end %>
 
-<p>Applicants:</p>
+<p><%= link_to "Applicants:", "/pets/#{@pet.id}/applications" %></p>
 <section id="applications">
 <% if @pet.applications.count == 0 %>
 <p>There are no applications to adopt this pet.</p>
 <% end %>
+<ul>
 <% @pet.applications.each do |application| %>
-  <%= link_to "#{application.name}", "/applications/#{application.id}" %>
+  <li>
+    <%= link_to "#{application.name}", "/applications/#{application.id}" %>
+  </li>
 <% end %>
+</ul>
 </section>

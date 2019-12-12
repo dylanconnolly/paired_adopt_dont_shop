@@ -25,9 +25,9 @@
       </div>
     </nav>
     <section class="flash-response">
-      <%= flash[:error] %>
-      <%= flash[:notice] %>
-      <%= flash[:success] %>
+      <p id="error"><%= flash[:error] %></p>
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="success"><%= flash[:success] %></p>
     </section>
     <%= yield %>
     <footer class="primary-footer">

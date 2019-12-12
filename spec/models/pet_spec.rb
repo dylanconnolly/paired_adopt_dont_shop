@@ -60,4 +60,29 @@ RSpec.describe Pet, type: :model do
 
     end
   end
+
+  describe "#deletable?" do
+    it "queries the database to see if pet has any approved applications" do
+
+      shelter = Shelter.create(name: "Blue Blue Barky",
+                                 address: "123 This Way",
+                                 city: "Denver",
+                                 state: "CO",
+                                 zip: "90204")
+
+      pet = Pet.create(name: "Rufus", image: "https://cdn.pixabay.com/photo/2018/05/07/10/48/husky-3380548_1280.jpg", approximate_age: "4", sex: "male", shelter: shelter)
+
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << pet
+
+      pet_app = PetApplication.create!(pet_id: pet.id, application_id: application.id, approved: true)
+
+      expect(pet.deletable?).to eq(false)
+
+      pet_app.update(approved: false)
+
+      expect(pet.deletable?).to eq(true)
+    end
+  end
 end

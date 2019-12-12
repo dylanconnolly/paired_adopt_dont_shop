@@ -52,25 +52,45 @@ RSpec.describe "pets index", type: :feature do
     end
   end
 
-  it "has a link to delete a pet next to each pet" do
+  describe "delete action" do
+    it "has a link to delete a pet next to each pet" do
 
-    visit '/pets'
+      visit '/pets'
 
-    within("#pet-links-#{@pet_1.id}") do
-      click_link("delete")
-      expect(current_path).to eq("/pets")
+      within("#pet-links-#{@pet_1.id}") do
+        click_link("delete")
+        expect(current_path).to eq("/pets")
+      end
+
+      visit '/pets'
+
+      within("#pet-links-#{@pet_2.id}") do
+        click_link("delete")
+        expect(current_path).to eq("/pets")
+      end
+
+      expect(page).to_not have_content(@pet_1.name)
+      expect(page).to_not have_content(@pet_2.name)
     end
 
-    visit '/pets'
+    it "displays an error flash message if pet cannot be deleted due to approved application" do
 
-    within("#pet-links-#{@pet_2.id}") do
-      click_link("delete")
-      expect(current_path).to eq("/pets")
+      application = Application.create!(name: "Dylan", address: "123 Main", city: "Denver", state: "CO", zip: "80203", phone: "555555", reason: "I am good owner")
+
+      application.pets << @pet_1
+      
+      pet_app = PetApplication.create!(pet_id: @pet_1.id, application_id: application.id, approved: true)
+
+      visit '/pets'
+
+      within("#pet-links-#{@pet_1.id}") do
+        click_link("delete")
+      end
+
+      expect(page).to have_content("Cannot delete pet as the pet has been approved for adoption.")
     end
-
-    expect(page).to_not have_content(@pet_1.name)
-    expect(page).to_not have_content(@pet_2.name)
   end
+
 
   it "the shelter name for each pet links to that shelter's show page" do
 

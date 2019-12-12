@@ -6,4 +6,8 @@ class PetApplicationsController < ApplicationController
     @pet_application.pet.switch_adoption_status
     redirect_to "/pets/#{@pet_application.pet.id}"
   end
+
+  def index
+    @pet_applications = PetApplication.where(pet_id: params[:pet_id])
+  end
 end

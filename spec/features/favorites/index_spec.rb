@@ -71,7 +71,7 @@ RSpec.describe "favorite pets index page", type: :feature do
 
     visit '/favorites'
 
-    within "#pet-#{@pet_1.id}" do
+    within "#favorite-#{@pet_1.id}" do
       click_on "Remove From Favorites"
     end
 
@@ -104,5 +104,20 @@ RSpec.describe "favorite pets index page", type: :feature do
     expect(page).to have_content("You do not have any favorite pets.")
     expect(page).to_not have_content(@pet_1.name)
     expect(page).to_not have_content(@pet_2.name)
+  end
+
+  it "when pet is deleted, it is removed from favorites" do
+
+    visit "/pets/#{@pet_1.id}"
+    click_on "Add To Favorites"
+
+    visit "/pets/#{@pet_2.id}"
+    click_on "Add To Favorites"
+
+    @pet_1.destroy
+
+    visit "/favorites"
+
+    expect(page).to_not have_content(@pet_1.name)
   end
 end
