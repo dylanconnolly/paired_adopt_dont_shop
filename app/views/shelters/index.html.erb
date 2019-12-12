@@ -9,7 +9,7 @@
         locals: {
           shelter: {
             id: shelter.id,
-            name: shelter.name,
+            name: (link_to "#{shelter.name}", "/shelters/#{shelter.id}"),
             # phrase: shelter.phrase,
             # description: shelter.description,
             address: shelter.address,
