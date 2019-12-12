@@ -1,11 +1,11 @@
 <section class="sub-header">
   <h1><%= @pet.name %></h1>
-  <%= link_to "Edit Pet", "/pets/#{@pet.id}/edit" %>
-  <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
+  <%= link_to "Edit Pet", "/pets/#{@pet.id}/edit", class: "btn-2" %>
+  <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete, class: "btn-2" %>
   <% if favorites.exists?(@pet.id) %>
-    <%= link_to "Remove From Favorites", "/favorites/#{@pet.id}", method: :delete %>
+    <%= link_to "Remove From Favorites", "/favorites/#{@pet.id}", method: :delete, class: "btn-2" %>
   <% else %>
-    <%= link_to "Add To Favorites", "/favorites/#{@pet.id}", method: :patch %>
+    <%= link_to "Add To Favorites", "/favorites/#{@pet.id}", method: :patch, class: "btn-1" %>
   <% end %>
 </section>
 
