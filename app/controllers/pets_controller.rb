@@ -25,6 +25,7 @@ class PetsController < ApplicationController
       redirect_to "/shelters/#{shelter.id}/pets"
     else
       flash[:error] = "Pet creation failed: please complete all fields on the form."
+      # shelter.errors.full_messages
       @shelter = shelter
       render :new
     end
